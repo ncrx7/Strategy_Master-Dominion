@@ -9,7 +9,7 @@ namespace InputHandler
         private InputSystemActions _inputControls;
 
         [Header("Player Movement fields")]
-        [SerializeField] public Vector2 movementInput;
+        [SerializeField] private Vector2 _movementInput;
         public float MoveAmount { get; private set; }
 
         private void OnEnable()
@@ -33,9 +33,9 @@ namespace InputHandler
 
         private void HandleLocomotionInputData(InputAction.CallbackContext context)
         {
-            movementInput = context.ReadValue<Vector2>();
+            _movementInput = context.ReadValue<Vector2>();
 
-            MoveAmount = Mathf.Clamp01(Mathf.Abs(movementInput.y) + Mathf.Abs(movementInput.x));
+            MoveAmount = Mathf.Clamp01(Mathf.Abs(_movementInput.y) + Mathf.Abs(_movementInput.x));
             //Debug.Log("move amount: " + MoveAmount);
 
             if (MoveAmount <= 0.5 && MoveAmount > 0)
@@ -51,7 +51,9 @@ namespace InputHandler
 
         private void ResetLocomotionInputData(InputAction.CallbackContext context)
         {
-            movementInput = Vector2.zero;
+            _movementInput = Vector2.zero;
         }
+
+        public Vector2 GetMovementDirection => _movementInput;
     }
 }
