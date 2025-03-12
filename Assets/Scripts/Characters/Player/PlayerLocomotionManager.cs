@@ -15,19 +15,29 @@ namespace Characters.Player
             if(_characterMoveDirection.magnitude < 0.1f)
                 return;
 
-            HandleLocomotion(_characterMoveDirection);
+            HandleMoveLocomotion(_characterMoveDirection);
+            HandleRotationLocomotion(_characterMoveDirection);
         }
 
-        private void HandleLocomotion(Vector2 direction)
+        private void HandleMoveLocomotion(Vector3 direction)
         {
-            Vector3 worldDirection = new Vector3(direction.x, 0, direction.y);
-            _characterController.Move(_characterSpeed * Time.deltaTime * worldDirection);
+            _characterController.Move(_characterSpeed * Time.deltaTime * _characterMoveDirection);
         }
 
         private void SetMoveDirection()
         {
             _characterMoveDirection.x = InputManager.Instance.GetMovementDirection.y;
-            _characterMoveDirection.y = -InputManager.Instance.GetMovementDirection.x;
+            _characterMoveDirection.z = -InputManager.Instance.GetMovementDirection.x;
+            
+        }
+
+        private void HandleRotationLocomotion(Vector3 direction)
+        {
+            Quaternion targetAngle = Quaternion.LookRotation(direction);
+
+            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, targetAngle, Time.deltaTime * _rotationSpeed);
+
+            transform.rotation = targetRotation;
         }
     }
 }
