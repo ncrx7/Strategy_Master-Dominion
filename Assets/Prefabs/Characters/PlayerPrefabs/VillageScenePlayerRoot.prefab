@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 750888441840804878}
   - component: {fileID: 8994579323272148476}
   m_Layer: 0
-  m_Name: PlayerRoot
+  m_Name: VillageScenePlayerRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   _characterController: {fileID: 8994579323272148476}
   _characterSpeed: 5
   _characterMoveDirection: {x: 0, y: 0, z: 0}
+  _rotationSpeed: 10
 --- !u!143 &8994579323272148476
 CharacterController:
   m_ObjectHideFlags: 0
@@ -349,6 +350,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ef5a89d10b35d8147aed1a08b3814a09, type: 2}
+    - target: {fileID: 4138223764781045879, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154391968531419768, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4247873944617200828, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
