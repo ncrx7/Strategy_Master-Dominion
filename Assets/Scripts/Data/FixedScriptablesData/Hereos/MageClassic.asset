@@ -15,3 +15,4 @@ MonoBehaviour:
   HeroId: 4
   HeroName: MageClassic
   UISprite: {fileID: 0}
+  HeroPrefab: {fileID: 76583211675731506, guid: 11c1a55adcebba844ac13497071c1dd0, type: 3}

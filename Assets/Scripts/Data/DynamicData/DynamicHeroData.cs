@@ -1,4 +1,5 @@
 using System;
+using Data.Scriptable.Heroes;
 using UnityEngine;
 
 namespace Data
@@ -11,6 +12,7 @@ namespace Data
         public int StrStat;
         public int ApStat;
         public int DexStat;
+        public FixedHeroData FixedHeroData;
 
         public DynamicHeroData(int heroId, int hpStat, int strStat, int apStat, int dexStat)
         {

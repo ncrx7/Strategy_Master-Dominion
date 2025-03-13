@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Data.Scriptable.Heroes;
 using UnityEngine;
 using UnityUtils.BaseClasses;
 
@@ -6,7 +8,8 @@ namespace Data
 {
     public class GameDataManager : SingletonBehavior<GameDataManager>
     {
-        PlayerData _playerData;
+        [SerializeField] private List<FixedHeroData> _fixedHeroDataList;
+        [SerializeField] PlayerData _playerData;
         DataWriterAndReader<PlayerData> _dataWriterAndReader;
 
         private void Awake()
@@ -20,16 +23,33 @@ namespace Data
 
         private void Start()
         {
-            InitializePlayerDataFile();
+            LoadPlayerDataFile();
+            InitializeHeroFixedData();
         }
 
-        public void InitializePlayerDataFile()
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                _playerData.CurrentLevel = 2;
+                UpdatePlayerDataFile();
+            }
+        }
+
+        private void LoadPlayerDataFile()
         {
             _playerData = _dataWriterAndReader.InitializeDataFile();
 
             Debug.Log("Current Level Setted -> Level - " + _playerData.CurrentLevel);
             Debug.Log("Default Heroes Setted -> Hero 0 HP - " + _playerData.Heroes[0].HpStat);
             Debug.Log("Default Gold Amount Setted -> Gold Amount - " + _playerData.GoldAmount);
+        }
+
+        private void InitializeHeroFixedData()
+        {
+            foreach (var hero in _playerData.Heroes)
+            {
+                hero.FixedHeroData = _fixedHeroDataList.FirstOrDefault(fixedHeroData => fixedHeroData.HeroId == hero.HeroId);
+            }
         }
 
         public void UpdatePlayerDataFile()

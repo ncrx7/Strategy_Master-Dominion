@@ -1,3 +1,4 @@
+using Characters;
 using UnityEngine;
 
 namespace Data.Scriptable.Heroes
@@ -8,6 +9,7 @@ namespace Data.Scriptable.Heroes
         public int HeroId;
         public string HeroName;
         public Sprite UISprite;
+        public HeroManager HeroPrefab;
         //hero ability
     }
 }

@@ -470,6 +470,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd724e91b4689a4e81cf48579d1e618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fixedHeroDataList:
+  - {fileID: 11400000, guid: cdb9ed4f439bf554c815facddbfd7d3d, type: 2}
+  - {fileID: 11400000, guid: 804e42cb358896042a97c414e9bbc3ed, type: 2}
+  - {fileID: 11400000, guid: 64041c9fb5c0a1545bd8a8828116e602, type: 2}
+  - {fileID: 11400000, guid: b8c27958a5a6a0b498bad45359fe5d2f, type: 2}
+  - {fileID: 11400000, guid: 87ba35dd483e24f4da3c0ae564802c0c, type: 2}
+  - {fileID: 11400000, guid: 7f5184279bdce964db9894894f19983d, type: 2}
+  - {fileID: 11400000, guid: 5377a2ced1fb9f446a179ccd97ccf0f0, type: 2}
+  - {fileID: 11400000, guid: 20ef6ecfc1ee0524d805256ba461fcec, type: 2}
+  - {fileID: 11400000, guid: 26e0aed666683d44a9075ce92a0cada0, type: 2}
+  _playerData:
+    CurrentLevel: 0
+    Heroes: []
+    GoldAmount: 0
+    IncreasePoint: 0
+    IsFirstEntry: 0
 --- !u!1 &1109224660
 GameObject:
   m_ObjectHideFlags: 0
