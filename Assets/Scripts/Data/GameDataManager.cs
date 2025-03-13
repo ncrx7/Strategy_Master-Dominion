@@ -28,8 +28,8 @@ namespace Data
             _playerData = _dataWriterAndReader.InitializeDataFile();
 
             Debug.Log("Current Level Setted -> Level - " + _playerData.CurrentLevel);
-            Debug.Log("Default Heroes Setted -> Hero ID - " + _playerData.HeroesIds[0]);
-            Debug.Log("Default Gold Amount Setted -> Hero ID - " + _playerData.GoldAmount);
+            Debug.Log("Default Heroes Setted -> Hero 0 HP - " + _playerData.Heroes[0].HpStat);
+            Debug.Log("Default Gold Amount Setted -> Gold Amount - " + _playerData.GoldAmount);
         }
 
         public void UpdatePlayerDataFile()
@@ -39,7 +39,8 @@ namespace Data
 
         public PlayerData CreateNewPlayerDataObject()
         {
-            PlayerData playerStats = new PlayerData(1, new List<int>() { 0 }, 0, 0);
+            DynamicHeroData _starterHero = new DynamicHeroData(1, 100, 20, 5, 10);
+            PlayerData playerStats = new PlayerData(1, new List<DynamicHeroData>() { _starterHero }, 0, 0, true);
             return playerStats;
         }
 

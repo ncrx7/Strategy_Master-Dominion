@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Data
 {
+    [Serializable]
     public class DynamicHeroData
     {
         public int HeroId;
@@ -9,5 +11,14 @@ namespace Data
         public int StrStat;
         public int ApStat;
         public int DexStat;
+
+        public DynamicHeroData(int heroId, int hpStat, int strStat, int apStat, int dexStat)
+        {
+            HeroId = heroId;
+            HpStat = hpStat;
+            StrStat = strStat;
+            ApStat = apStat;
+            DexStat = dexStat;
+        } 
     }
 }
