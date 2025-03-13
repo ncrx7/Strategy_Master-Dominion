@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Data.Scriptable.Heroes;
 using UnityEngine;
 using UnityUtils.BaseClasses;
@@ -11,6 +12,7 @@ namespace Data
         [SerializeField] private List<FixedHeroData> _fixedHeroDataList;
         [SerializeField] PlayerData _playerData;
         DataWriterAndReader<PlayerData> _dataWriterAndReader;
+        public bool IsDataLoadFinished = false;
 
         private void Awake()
         {
@@ -21,35 +23,35 @@ namespace Data
             _dataWriterAndReader = new DataWriterAndReader<PlayerData>(Application.persistentDataPath, "Player_Data");
         }
 
-        private void Start()
+        private async void Start()
         {
-            LoadPlayerDataFile();
-            InitializeHeroFixedData();
+            InitializeData();
         }
 
-        private void Update() {
-            if(Input.GetKeyDown(KeyCode.Z))
-            {
-                _playerData.CurrentLevel = 2;
-                UpdatePlayerDataFile();
-            }
+        private async void InitializeData()
+        {
+            await LoadPlayerDataFile();
+            await LoadHeroFixedData();
+            IsDataLoadFinished = true;
         }
 
-        private void LoadPlayerDataFile()
+        private async UniTask LoadPlayerDataFile()
         {
-            _playerData = _dataWriterAndReader.InitializeDataFile();
+            _playerData = await _dataWriterAndReader.InitializeDataFile();
 
             Debug.Log("Current Level Setted -> Level - " + _playerData.CurrentLevel);
             Debug.Log("Default Heroes Setted -> Hero 0 HP - " + _playerData.Heroes[0].HpStat);
             Debug.Log("Default Gold Amount Setted -> Gold Amount - " + _playerData.GoldAmount);
         }
 
-        private void InitializeHeroFixedData()
+        private async UniTask LoadHeroFixedData()
         {
             foreach (var hero in _playerData.Heroes)
             {
                 hero.FixedHeroData = _fixedHeroDataList.FirstOrDefault(fixedHeroData => fixedHeroData.HeroId == hero.HeroId);
             }
+
+            await UniTask.Delay(300);
         }
 
         public void UpdatePlayerDataFile()
