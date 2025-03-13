@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Data.Scriptable.Heroes
 {
     [CreateAssetMenu(fileName = "Hero", menuName = "Scriptable Objects/Hero")]
-    public class Hero : ScriptableObject
+    public class FixedHeroData : ScriptableObject
     {
         public int HeroId;
         public string HeroName;

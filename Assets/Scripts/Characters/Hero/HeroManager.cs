@@ -7,7 +7,7 @@ namespace Characters
 {
     public class HeroManager : CharacterManager
     {
-        public Hero FixedHeroData;
-        public HeroData DynamicHeroData;
+        public FixedHeroData FixedHeroData;
+        public DynamicHeroData DynamicHeroData;
     }
 }

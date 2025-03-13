@@ -165,7 +165,7 @@ MonoBehaviour:
     NearClipPlane: 0.01
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     PhysicalProperties:
       GateFit: 2
       SensorSize: {x: 21.946, y: 16.002}
@@ -473,63 +473,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1001 &1762352624
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.1820927
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.8956661
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3194666736543946454, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7971899030227973056, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
-      propertyPath: m_Name
-      value: BasicHero_F_Archer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fa81bea2202f772468b5716885f30c8d, type: 3}
 --- !u!1 &1874155646
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,4 +660,3 @@ SceneRoots:
   - {fileID: 1231201778}
   - {fileID: 3380757815407241266}
   - {fileID: 534461526}
-  - {fileID: 1762352624}

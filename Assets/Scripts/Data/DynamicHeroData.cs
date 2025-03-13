@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Data
 {
-    public class HeroData
+    public class DynamicHeroData
     {
         public int HeroId;
         public int HpStat;
