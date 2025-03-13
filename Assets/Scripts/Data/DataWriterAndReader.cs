@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using Data;
+using Cysharp.Threading.Tasks;
 
 public class DataWriterAndReader<T> 
 {
@@ -13,7 +14,7 @@ public class DataWriterAndReader<T>
         SaveFileName = DataFileName;
     }
 
-    public T InitializeDataFile()
+    public async UniTask<T> InitializeDataFile()
     {
         T playerData = default;
         string loadPath = Path.Combine(SaveDataDirectoryPath, SaveFileName);
@@ -29,7 +30,7 @@ public class DataWriterAndReader<T>
                 {
                     using (StreamReader fileReader = new StreamReader(stream))
                     {
-                        dataToLoad = fileReader.ReadToEnd();
+                        dataToLoad = await fileReader.ReadToEndAsync();
                     }
                 }
 
@@ -62,7 +63,7 @@ public class DataWriterAndReader<T>
                 {
                     using (StreamWriter fileWriter = new StreamWriter(stream))
                     {
-                        fileWriter.Write(dataToStore);
+                        await fileWriter.WriteAsync(dataToStore);
                     }
                 }
             }
