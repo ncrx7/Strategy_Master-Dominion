@@ -15,3 +15,4 @@ MonoBehaviour:
   HeroId: 0
   HeroName: WarlockClassic
   UISprite: {fileID: 0}
+  HeroPrefab: {fileID: 451638451937353616, guid: 904b8153ec08df941a240e9938090c18, type: 3}

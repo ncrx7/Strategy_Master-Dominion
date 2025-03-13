@@ -15,3 +15,4 @@ MonoBehaviour:
   HeroId: 8
   HeroName: ArcherClassic
   UISprite: {fileID: 0}
+  HeroPrefab: {fileID: 1989214387523894705, guid: fa81bea2202f772468b5716885f30c8d, type: 3}

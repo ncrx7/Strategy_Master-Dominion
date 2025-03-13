@@ -83,7 +83,7 @@ public class DataWriterAndReader<T>
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(savePath));
-            Debug.Log("Creating Save File At: " + savePath);
+            Debug.Log("Updating Save File At: " + savePath);
 
             string dataToStore = JsonUtility.ToJson(playerStatData, true);
 

@@ -15,3 +15,4 @@ MonoBehaviour:
   HeroId: 3
   HeroName: RogueClassic
   UISprite: {fileID: 0}
+  HeroPrefab: {fileID: 7440431844611955630, guid: 8bce2f7ad43db614eae98de3e3176bc8, type: 3}

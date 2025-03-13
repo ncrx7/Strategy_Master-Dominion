@@ -15,3 +15,4 @@ MonoBehaviour:
   HeroId: 2
   HeroName: SorcererClassic
   UISprite: {fileID: 0}
+  HeroPrefab: {fileID: 7110530413930944507, guid: ac6b98a0fa9e3344aa0f08ae6d4c3937, type: 3}
