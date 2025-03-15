@@ -23,7 +23,7 @@ namespace Data
             _dataWriterAndReader = new DataWriterAndReader<PlayerData>(Application.persistentDataPath, "Player_Data");
         }
 
-        private async void Start()
+        private void Start()
         {
             InitializeData();
         }
@@ -32,7 +32,9 @@ namespace Data
         {
             await LoadPlayerDataFile();
             await LoadHeroFixedData();
+
             IsDataLoadFinished = true;
+            GameEventHandler.OnCompleteDataLoad?.Invoke();
         }
 
         private async UniTask LoadPlayerDataFile()
@@ -51,7 +53,7 @@ namespace Data
                 hero.FixedHeroData = _fixedHeroDataList.FirstOrDefault(fixedHeroData => fixedHeroData.HeroId == hero.HeroId);
             }
 
-            await UniTask.Delay(300);
+            await UniTask.Delay(1000);
         }
 
         public void UpdatePlayerDataFile()
