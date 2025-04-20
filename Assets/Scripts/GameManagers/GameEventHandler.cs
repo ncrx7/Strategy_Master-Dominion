@@ -1,4 +1,5 @@
 using System;
+using Data;
 using UnityEngine;
 
 public class GameEventHandler 
@@ -16,6 +17,6 @@ public class GameEventHandler
 
 
     #region Main Menu
-    public static Action OnCompleteDataLoad;
+    public static Action<PlayerData> OnCompleteDataLoad;
     #endregion
 }

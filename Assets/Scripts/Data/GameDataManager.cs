@@ -36,16 +36,16 @@ namespace Data
             await LoadHeroFixedData();
 
             IsDataLoadFinished = true;
-            GameEventHandler.OnCompleteDataLoad?.Invoke();
+            GameEventHandler.OnCompleteDataLoad?.Invoke(_playerData);
         }
 
         private async UniTask LoadPlayerDataFile()
         {
             _playerData = await _dataWriterAndReader.InitializeDataFile();
 
-            Debug.Log("Current Level Setted -> Level - " + _playerData.CurrentLevel);
+/*             Debug.Log("Current Level Setted -> Level - " + _playerData.CurrentLevel);
             Debug.Log("Default Heroes Setted -> Hero 0 HP - " + _playerData.Heroes[0].HpStat);
-            Debug.Log("Default Gold Amount Setted -> Gold Amount - " + _playerData.GoldAmount);
+            Debug.Log("Default Gold Amount Setted -> Gold Amount - " + _playerData.GoldAmount); */
         }
 
         private async UniTask LoadHeroFixedData()
