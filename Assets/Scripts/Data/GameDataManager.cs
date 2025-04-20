@@ -14,8 +14,10 @@ namespace Data
         DataWriterAndReader<PlayerData> _dataWriterAndReader;
         public bool IsDataLoadFinished = false;
 
-        private void Awake()
+        protected void Awake()
         {
+            base.Awake();
+
             transform.parent = null;
 
             DontDestroyOnLoad(gameObject);
@@ -64,7 +66,7 @@ namespace Data
         public PlayerData CreateNewPlayerDataObject()
         {
             DynamicHeroData _starterHero = new DynamicHeroData(1, 100, 20, 5, 10);
-            PlayerData playerStats = new PlayerData(1, new List<DynamicHeroData>() { _starterHero }, 0, 0, true);
+            PlayerData playerStats = new PlayerData(1, new List<DynamicHeroData>() { _starterHero }, 0, 0, true, 0);
             return playerStats;
         }
 
