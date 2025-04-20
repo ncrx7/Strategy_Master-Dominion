@@ -15,8 +15,14 @@ public class GameEventHandler
     public static Action OnArenaSceneExit;
     #endregion
 
-
     #region Main Menu
+    public static Action OnClickHomePanelButton;
+    public static Action OnClickInventoryPanelButton;
+    public static Action OnClickShopPanelButton;
+    #endregion
+
+
+    #region GamePlay
     public static Action<PlayerData> OnCompleteDataLoad;
     #endregion
 }
