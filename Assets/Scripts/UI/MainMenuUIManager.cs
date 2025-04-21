@@ -33,7 +33,7 @@ namespace UI
             //CAN BE ADDED CUSTOM UI ACTIONS
             _currentButtonObject = _homePanelButton.gameObject;
             _currentButtonObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            
+
             _currentPanelDisplaying = _homePanel;
 
             BindButtonActions();
@@ -53,50 +53,17 @@ namespace UI
 
             GameEventHandler.OnClickHomePanelButton += () =>
             {
-                if(_currentButtonObject != null)
-                    _currentButtonObject.transform.localScale = Vector3.one;
-
-                if(_currentPanelDisplaying != null)
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-
-                _homePanelButton.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                _currentButtonObject = _homePanelButton.gameObject;
-
-                _currentPanelDisplaying = _homePanel;
-
-                ExecuteUIAction(UIActionType.SetPanelVisibility, true, _homePanel);
+                BaseInteractOnPanelButtonClicking(_homePanelButton.gameObject, _homePanel);
             };
 
             GameEventHandler.OnClickInventoryPanelButton += () =>
             {
-                if(_currentButtonObject != null)
-                    _currentButtonObject.transform.localScale = Vector3.one;
-                
-                if(_currentPanelDisplaying != null)
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-
-                _inventoryPanelButton.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                _currentButtonObject = _inventoryPanelButton.gameObject;
-
-                _currentPanelDisplaying = _inventoryPanel;
-
-                ExecuteUIAction(UIActionType.SetPanelVisibility, true, _inventoryPanel);
+                BaseInteractOnPanelButtonClicking(_inventoryPanelButton.gameObject, _inventoryPanel);
             };
 
             GameEventHandler.OnClickShopPanelButton += () =>
             {
-                if(_currentButtonObject != null)
-                    _currentButtonObject.transform.localScale = Vector3.one;
-                
-                if(_currentPanelDisplaying != null)
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-
-                _shopPanelButton.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                _currentButtonObject = _shopPanelButton.gameObject;
-
-                _currentPanelDisplaying = _shopPanel;
-
-                ExecuteUIAction(UIActionType.SetPanelVisibility, true, _shopPanel);
+                BaseInteractOnPanelButtonClicking(_shopPanelButton.gameObject, _shopPanel);
             };
         }
 
@@ -106,56 +73,23 @@ namespace UI
             {
                 ExecuteUIAction(UIActionType.SetText, playerData.GoldAmount.ToString(), _goldText);
                 ExecuteUIAction(UIActionType.SetText, playerData.CurrentLevel.ToString(), _levelText);
-                
+
                 ExecuteUIAction(UIActionType.SetPanelVisibility, false, _loadingPanel);
             };
 
-                        GameEventHandler.OnClickHomePanelButton += () =>
+            GameEventHandler.OnClickHomePanelButton -= () =>
             {
-                if(_currentButtonObject != null)
-                    _currentButtonObject.transform.localScale = Vector3.one;
-
-                if(_currentPanelDisplaying != null)
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-
-                _homePanelButton.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                _currentButtonObject = _homePanelButton.gameObject;
-
-                _currentPanelDisplaying = _homePanel;
-
-                ExecuteUIAction(UIActionType.SetPanelVisibility, true, _homePanel);
+                BaseInteractOnPanelButtonClicking(_homePanelButton.gameObject, _homePanel);
             };
 
-            GameEventHandler.OnClickInventoryPanelButton += () =>
+            GameEventHandler.OnClickInventoryPanelButton -= () =>
             {
-                if(_currentButtonObject != null)
-                    _currentButtonObject.transform.localScale = Vector3.one;
-                
-                if(_currentPanelDisplaying != null)
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-
-                _inventoryPanelButton.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                _currentButtonObject = _inventoryPanelButton.gameObject;
-
-                _currentPanelDisplaying = _inventoryPanel;
-
-                ExecuteUIAction(UIActionType.SetPanelVisibility, true, _inventoryPanel);
+                BaseInteractOnPanelButtonClicking(_inventoryPanelButton.gameObject, _inventoryPanel);
             };
 
-            GameEventHandler.OnClickShopPanelButton += () =>
+            GameEventHandler.OnClickShopPanelButton -= () =>
             {
-                if(_currentButtonObject != null)
-                    _currentButtonObject.transform.localScale = Vector3.one;
-                
-                if(_currentPanelDisplaying != null)
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-
-                _shopPanelButton.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                _currentButtonObject = _shopPanelButton.gameObject;
-
-                _currentPanelDisplaying = _shopPanel;
-
-                ExecuteUIAction(UIActionType.SetPanelVisibility, true, _shopPanel);
+                BaseInteractOnPanelButtonClicking(_shopPanelButton.gameObject, _shopPanel);
             };
         }
 
@@ -164,6 +98,22 @@ namespace UI
             _homePanelButton.onClick.AddListener(() => GameEventHandler.OnClickHomePanelButton?.Invoke());
             _inventoryPanelButton.onClick.AddListener(() => GameEventHandler.OnClickInventoryPanelButton?.Invoke());
             _shopPanelButton.onClick.AddListener(() => GameEventHandler.OnClickShopPanelButton?.Invoke());
+        }
+
+        private void BaseInteractOnPanelButtonClicking(GameObject buttonObject, GameObject panelObject)
+        {
+            if (_currentButtonObject != null)
+                _currentButtonObject.transform.localScale = Vector3.one;
+
+            if (_currentPanelDisplaying != null)
+                ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
+
+            buttonObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            _currentButtonObject = buttonObject.gameObject;
+
+            _currentPanelDisplaying = panelObject;
+
+            ExecuteUIAction(UIActionType.SetPanelVisibility, true, _currentPanelDisplaying);
         }
     }
 }
