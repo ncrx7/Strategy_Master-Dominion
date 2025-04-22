@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5453126, y: 0.81764233}
   m_AnchorMax: {x: 0.5453126, y: 0.81764233}
-  m_AnchoredPosition: {x: -29, y: -50.000183}
+  m_AnchoredPosition: {x: -29, y: -50.000244}
   m_SizeDelta: {x: 806.5461, y: 1205.8667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1116445627342418586
@@ -84,6 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9144338350772850287}
+  - component: {fileID: 3893602350821152}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -114,6 +115,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3893602350821152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355948923818137332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532ee5709b43b804199e7201c3f9065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelType: 3
 --- !u!1 &3925835930661842109
 GameObject:
   m_ObjectHideFlags: 0

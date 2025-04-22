@@ -74,6 +74,23 @@ namespace UnityUtils.BaseClasses
                 Debug.LogWarning("Undefined action Type!!");
             }
         }
+
+        protected bool TryGetPanel<TPanel>(TType type, out TPanel result) where TPanel : BasePanel<TType, TData>
+        {
+            if (_mainPanelMap.TryGetValue(type, out var basePanel))
+            {
+                result = basePanel as TPanel;
+                return result != null;
+            }
+
+            result = null;
+            return false;
+        }
+
+        protected TPanel GetPanel<TPanel>(TType type) where TPanel : BasePanel<TType,TData>
+        {
+            return _mainPanelMap[type] as TPanel;
+        }
     }
 }
 
