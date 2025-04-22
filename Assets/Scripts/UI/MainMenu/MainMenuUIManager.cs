@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Data;
 using Enums;
 using TMPro;
+using UI.MainMenu.PanelControllers;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityUtils.BaseClasses;
@@ -12,14 +13,9 @@ namespace UI
     public class MainMenuUIManager : BaseUIManager<MainPanelType, PlayerData>
     {
         [Header("Overlay Panel References")]
-        [SerializeField] private TextMeshProUGUI _levelText;
-        [SerializeField] private TextMeshProUGUI _goldText;
-        [SerializeField] private Button _homePanelButton;
-        [SerializeField] private Button _inventoryPanelButton;
-        [SerializeField] private Button _shopPanelButton;
 
-        [SerializeField]private GameObject _currentPanelDisplaying;
-        [SerializeField]private GameObject _currentButtonObject;
+        [SerializeField] private GameObject _currentPanelDisplaying;
+        [SerializeField] private GameObject _currentButtonObject;
 
         protected override void Awake()
         {
@@ -52,10 +48,17 @@ namespace UI
             GameEventHandler.OnClickShopPanelButton -= OnClickShopPanelButton;
         }
 
+
+
         private void InitializeUI()
         {
             //CAN BE ADDED CUSTOM UI ACTIONS
-            _currentButtonObject = _homePanelButton.gameObject;
+            if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out var overlayPanel))
+            {
+                _currentButtonObject = overlayPanel.GetHomePanelButton.gameObject;
+                //_currentButtonObject = GetPanel<OverlayPanel>(MainPanelType.OverlayPanel).GetHomePanelButton.gameObject;
+            }
+
             _currentButtonObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
 
             _currentPanelDisplaying = _mainPanelMap[MainPanelType.HomePanel].gameObject;
@@ -65,32 +68,47 @@ namespace UI
 
         private void OnCompleteGameDataLoad(PlayerData playerData)
         {
-            ExecuteUIAction(UIActionType.SetText, playerData.GoldAmount.ToString(), _goldText);
-            ExecuteUIAction(UIActionType.SetText, playerData.CurrentLevel.ToString(), _levelText);
+            if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
+            {
+                ExecuteUIAction(UIActionType.SetText, playerData.GoldAmount.ToString(), overlayPanel.GetgoldText);
+                ExecuteUIAction(UIActionType.SetText, playerData.CurrentLevel.ToString(), overlayPanel.GetLevelText);
+            }
 
             ExecuteUIAction(UIActionType.SetPanelVisibility, false, _mainPanelMap[MainPanelType.LoadingPanel].gameObject);
         }
 
         private void OnClickHomePanelButton()
         {
-            BaseInteractOnPanelButtonClicking(_homePanelButton.gameObject, _mainPanelMap[MainPanelType.HomePanel]);
+            if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
+            {
+                BaseInteractOnPanelButtonClicking(overlayPanel.GetHomePanelButton.gameObject, _mainPanelMap[MainPanelType.HomePanel]);
+            }
         }
 
         private void OnClickInventoryPanelButton()
         {
-            BaseInteractOnPanelButtonClicking(_inventoryPanelButton.gameObject, _mainPanelMap[MainPanelType.InventoryPanel]);
+            if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
+            {
+                BaseInteractOnPanelButtonClicking(overlayPanel.GetInventoryPanelButton.gameObject, _mainPanelMap[MainPanelType.InventoryPanel]);
+            }
         }
 
         private void OnClickShopPanelButton()
         {
-            BaseInteractOnPanelButtonClicking(_shopPanelButton.gameObject, _mainPanelMap[MainPanelType.ShopPanel]);
+            if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
+            {
+                BaseInteractOnPanelButtonClicking(overlayPanel.GetShopPanelButton.gameObject, _mainPanelMap[MainPanelType.ShopPanel]);
+            }
         }
 
         private void BindButtonActions()
         {
-            _homePanelButton.onClick.AddListener(() => GameEventHandler.OnClickHomePanelButton?.Invoke());
-            _inventoryPanelButton.onClick.AddListener(() => GameEventHandler.OnClickInventoryPanelButton?.Invoke());
-            _shopPanelButton.onClick.AddListener(() => GameEventHandler.OnClickShopPanelButton?.Invoke());
+            if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
+            {
+                overlayPanel.GetHomePanelButton.onClick.AddListener(() => GameEventHandler.OnClickHomePanelButton?.Invoke());
+                overlayPanel.GetInventoryPanelButton.onClick.AddListener(() => GameEventHandler.OnClickInventoryPanelButton?.Invoke());
+                overlayPanel.GetShopPanelButton.onClick.AddListener(() => GameEventHandler.OnClickShopPanelButton?.Invoke());
+            }
         }
 
         private void BaseInteractOnPanelButtonClicking(GameObject buttonObject, BasePanel<MainPanelType, PlayerData> panelObject)
