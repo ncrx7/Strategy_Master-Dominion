@@ -22,10 +22,10 @@ namespace GameManagers.Device
             switch (deviceType)
             {
                 case Enums.DeviceType.PC:
-                    VillageSceneUIManager.Instance.SetPanel(Enums.PanelType.JoyStickPanel, false);
+                    VillageSceneUIManager.Instance.SetPanel(Enums.GamePanelType.JoyStickPanel, false);
                     break;
                 case Enums.DeviceType.Mobile:
-                    VillageSceneUIManager.Instance.SetPanel(Enums.PanelType.JoyStickPanel, true);
+                    VillageSceneUIManager.Instance.SetPanel(Enums.GamePanelType.JoyStickPanel, true);
                     break;
                 default:
                     Debug.LogWarning("Undefined Device Type!!");

@@ -7,13 +7,18 @@ using UnityEngine.UI;
 
 namespace UnityUtils.BaseClasses
 {
-    public class BaseUIManager : MonoBehaviour
+    public class BaseUIManager<TType, TData> : MonoBehaviour where TType : Enum
     {
+        [Header("Panels")]
+        [SerializeField] private List<BasePanel<TType, TData>> _mainPanels;
+        protected Dictionary<TType, BasePanel<TType, TData>> _mainPanelMap = new();
+
         protected Dictionary<UIActionType, object> _uiActionMap = new();
 
         protected virtual void Awake()
         {
             InitializeBaseUIAction();
+            InitializeMainPanelMap();
         }
 
         private void InitializeBaseUIAction()
@@ -22,6 +27,18 @@ namespace UnityUtils.BaseClasses
             AddUIActionToMap<string, TextMeshProUGUI>(UIActionType.SetText, (textString, textObject) => textObject.text = textString);
             AddUIActionToMap<Slider, float>(UIActionType.SetSlider, (slider, value) => slider.value = value);
             AddUIActionToMap<Image, Sprite>(UIActionType.SetImage, (image, sprite) => image.sprite = sprite);
+        }
+
+        private void InitializeMainPanelMap()
+        {
+            if(_mainPanels == null || _mainPanels.Count == 0)
+                return;
+            
+            foreach (var mainPanel in _mainPanels)
+            {
+                _mainPanelMap[mainPanel.PanelType] = mainPanel;
+                Debug.Log("main panel name: " + _mainPanelMap[mainPanel.PanelType].gameObject.name);
+            }
         }
 
         protected void AddUIActionToMap<T>(UIActionType actionType, Action<T> action)

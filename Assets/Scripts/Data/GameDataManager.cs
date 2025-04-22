@@ -36,7 +36,7 @@ namespace Data
             await LoadHeroFixedData();
 
             IsDataLoadFinished = true;
-            GameEventHandler.OnCompleteDataLoad?.Invoke(_playerData);
+            GameEventHandler.OnCompleteGameDataLoad?.Invoke(_playerData);
         }
 
         private async UniTask LoadPlayerDataFile()

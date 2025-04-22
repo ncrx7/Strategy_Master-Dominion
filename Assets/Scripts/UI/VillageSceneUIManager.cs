@@ -8,11 +8,11 @@ namespace VillageSceneUI
     {
         [SerializeField] private GameObject _touchPanel;
 
-        public void SetPanel(PanelType panelType, bool active)
+        public void SetPanel(GamePanelType panelType, bool active)
         {
             switch (panelType)
             {
-                case PanelType.JoyStickPanel:
+                case GamePanelType.JoyStickPanel:
                     _touchPanel.SetActive(active);
                     break;
                 default:

@@ -23,6 +23,6 @@ public class GameEventHandler
 
 
     #region GamePlay
-    public static Action<PlayerData> OnCompleteDataLoad;
+    public static Action<PlayerData> OnCompleteGameDataLoad;
     #endregion
 }
