@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7081988482109413598, guid: b66c41d9baf49714faacb957c56e724c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc4b495d25ff67f419bc955bf31de77c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1048,6 +1052,10 @@ PrefabInstance:
     - target: {fileID: 1355948923818137332, guid: 891a3763a9a2df1458d3dacdab2202c3, type: 3}
       propertyPath: m_Name
       value: LoadingPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355948923818137332, guid: 891a3763a9a2df1458d3dacdab2202c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9144338350772850287, guid: 891a3763a9a2df1458d3dacdab2202c3, type: 3}
       propertyPath: m_Pivot.x
