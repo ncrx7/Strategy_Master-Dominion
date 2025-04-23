@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Data.Scriptable.Heroes;
 using UnityEngine;
 using UnityUtils.BaseClasses;
+using UnityUtils.Core.DataManagment;
 
 namespace Data
 {
@@ -41,7 +42,7 @@ namespace Data
 
         private async UniTask LoadPlayerDataFile()
         {
-            _playerData = await _dataWriterAndReader.InitializeDataFile();
+            _playerData = await _dataWriterAndReader.InitializeDataFile(CreateNewPlayerDataObject);
 
 /*             Debug.Log("Current Level Setted -> Level - " + _playerData.CurrentLevel);
             Debug.Log("Default Heroes Setted -> Hero 0 HP - " + _playerData.Heroes[0].HpStat);
