@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameEventHandler 
 {
+    #region Scene Load Events
+    public static Action OnSceneLoadStart;
+    public static Action OnSceneLoadFinished;
+    #endregion
+
     #region Village Scene
     public static Action OnVillageSceneStart;
     public static Action OnVillageSceneExit;

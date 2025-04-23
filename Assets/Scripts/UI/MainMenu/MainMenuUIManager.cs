@@ -28,6 +28,16 @@ namespace UI
         {
             ExecuteUIAction(UIActionType.SetPanelVisibility, true, _mainPanelMap[MainPanelType.LoadingPanel].gameObject);
 
+            RegisterUIActions();
+        }
+
+        private void OnDisable()
+        {
+            UnRegisterUIActions();
+        }
+
+        private void RegisterUIActions()
+        {
             GameEventHandler.OnCompleteGameDataLoad += OnCompleteGameDataLoad;
 
             GameEventHandler.OnClickHomePanelButton += OnClickHomePanelButton;
@@ -35,9 +45,13 @@ namespace UI
             GameEventHandler.OnClickInventoryPanelButton += OnClickInventoryPanelButton;
 
             GameEventHandler.OnClickShopPanelButton += OnClickShopPanelButton;
+
+            GameEventHandler.OnSceneLoadStart += OnSceneLoadStart;
+
+            GameEventHandler.OnSceneLoadFinished += OnSceneLoadFinished;
         }
 
-        private void OnDisable()
+        private void UnRegisterUIActions()
         {
             GameEventHandler.OnCompleteGameDataLoad -= OnCompleteGameDataLoad;
 
@@ -46,9 +60,11 @@ namespace UI
             GameEventHandler.OnClickInventoryPanelButton -= OnClickInventoryPanelButton;
 
             GameEventHandler.OnClickShopPanelButton -= OnClickShopPanelButton;
+
+            GameEventHandler.OnSceneLoadStart -= OnSceneLoadStart;
+
+            GameEventHandler.OnSceneLoadFinished -= OnSceneLoadFinished;
         }
-
-
 
         private void InitializeUI()
         {
@@ -98,6 +114,24 @@ namespace UI
             if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
             {
                 BaseInteractOnPanelButtonClicking(overlayPanel.GetShopPanelButton.gameObject, _mainPanelMap[MainPanelType.ShopPanel]);
+            }
+        }
+
+        private void OnSceneLoadStart()
+        {
+            if (TryGetPanel<LoadingPanel>(MainPanelType.LoadingPanel, out LoadingPanel loadingPanel))
+            {
+                ExecuteUIAction(UIActionType.SetPanelVisibility, loadingPanel, true);
+                loadingPanel.OnOpenPanel(GameDataManager.Instance.GetPlayerDataObjectReference());
+            }
+        }
+
+        private void OnSceneLoadFinished()
+        {
+            if (TryGetPanel<LoadingPanel>(MainPanelType.LoadingPanel, out LoadingPanel loadingPanel))
+            {
+                ExecuteUIAction(UIActionType.SetPanelVisibility, loadingPanel, false);
+                loadingPanel.OnClosePanel(GameDataManager.Instance.GetPlayerDataObjectReference());
             }
         }
 
