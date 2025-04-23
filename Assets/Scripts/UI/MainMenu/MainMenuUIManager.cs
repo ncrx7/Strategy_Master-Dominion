@@ -151,7 +151,10 @@ namespace UI
                 _currentButtonObject.transform.localScale = Vector3.one;
 
             if (_currentPanelDisplaying != null)
+            {
                 ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
+                panelObject.OnClosePanel(GameDataManager.Instance.GetPlayerDataObjectReference());
+            }
 
             buttonObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
             _currentButtonObject = buttonObject.gameObject;
