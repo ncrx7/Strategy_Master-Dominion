@@ -24,6 +24,7 @@ public class GameEventHandler
     public static Action OnClickHomePanelButton;
     public static Action OnClickInventoryPanelButton;
     public static Action OnClickShopPanelButton;
+    public static Action OnClickPlayButton;
     #endregion
 
 
