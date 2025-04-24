@@ -1,24 +1,42 @@
+using Data;
 using Enums;
 using UnityEngine;
 using UnityUtils.BaseClasses;
 
-namespace VillageSceneUI
+namespace UI.VillageScene
 {
-    public class VillageSceneUIManager : SingletonBehavior<VillageSceneUIManager>
+    public class VillageSceneUIManager : BaseUIManager<VillageSceneGamePanelType, PlayerData>
     {
         [SerializeField] private GameObject _touchPanel;
 
-        public void SetPanel(GamePanelType panelType, bool active)
+        private void OnEnable()
         {
-            switch (panelType)
+            GameEventHandler.OnVillageSceneStart += SetInitialPlatformBasedPanels;
+        }
+
+        private void OnDisable()
+        {
+            GameEventHandler.OnVillageSceneStart -= SetInitialPlatformBasedPanels;
+        }
+
+        private void SetInitialPlatformBasedPanels(PlatformType platformType)
+        {
+            switch (platformType)
             {
-                case GamePanelType.JoyStickPanel:
-                    _touchPanel.SetActive(active);
+                case PlatformType.PC:
+                    Debug.Log("PC ");
+                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _touchPanel);
+                    break;
+                case PlatformType.Mobile:
+                Debug.Log("MOBİLE");
+                    ExecuteUIAction(UIActionType.SetPanelVisibility, true, _touchPanel);
                     break;
                 default:
-                    Debug.LogWarning("Undefined Panel Type!!");
+                    Debug.LogWarning("Undefined Platform Type!!");
                     break;
             }
         }
+
+
     }
 }

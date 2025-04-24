@@ -1,5 +1,6 @@
 using System;
 using Data;
+using Enums;
 using UnityEngine;
 
 public class GameEventHandler 
@@ -10,8 +11,8 @@ public class GameEventHandler
     #endregion
 
     #region Village Scene
-    public static Action OnVillageSceneStart;
-    public static Action OnVillageSceneExit;
+    public static Action<PlatformType> OnVillageSceneStart;
+    public static Action<PlatformType> OnVillageSceneExit;
     #endregion
     
 
