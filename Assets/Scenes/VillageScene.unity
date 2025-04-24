@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 87309646}
   - component: {fileID: 87309647}
   m_Layer: 0
-  m_Name: PlayableDirectorController
+  m_Name: CinematicController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585b2284ccdeec544b668030b0bd2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCinematic: {fileID: 0}
+  _cinematics:
+  - PlayableDirectory: {fileID: 0}
+    Type: 0
 --- !u!1 &128278489
 GameObject:
   m_ObjectHideFlags: 0

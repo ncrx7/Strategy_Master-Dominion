@@ -12,23 +12,25 @@ namespace Core
 
         private void OnEnable()
         {
-            GameEventHandler.OnVillageSceneStart += PlayStarterCinematic;
+            GameEventHandler.OnVillageSceneStart += EntryCinematicBehaviour;
         }
 
         private void OnDisable()
         {
-            GameEventHandler.OnVillageSceneStart -= PlayStarterCinematic;
+            GameEventHandler.OnVillageSceneStart -= EntryCinematicBehaviour;
         }
 
-        private void PlayStarterCinematic(PlatformType platformType)
+        //ENTRY CINEMATIC HEAD
+        private void EntryCinematicBehaviour(PlatformType platformType)
         {
-            var cinematic = GetCinematic(CinematicType.StarterCinematic);
-            
-            if (cinematic == null && GameDataManager.Instance.GetPlayerDataObjectReference().IsFirstEntry)
-            {
-                cinematic.PlayCinematic();
-            }
+            PlayCinematic(CinematicType.StarterCinematic, GameDataManager.Instance.GetPlayerDataObjectReference().IsFirstEntry, OnEntryCinematicStopped );
         }
+
+        private void OnEntryCinematicStopped(PlayableDirector director) 
+        {
+            director.stopped -= OnEntryCinematicStopped;
+        }
+        //ENTRY CINEMATIC END
     }
 }
 

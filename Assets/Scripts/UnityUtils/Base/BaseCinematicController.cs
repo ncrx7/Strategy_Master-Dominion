@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityUtils.Data;
 
 namespace UnityUtils.BaseClasses
@@ -23,5 +24,16 @@ namespace UnityUtils.BaseClasses
             return _cinematicsMap[type];
         }
 
+        protected void PlayCinematic(TType type, bool condition, Action<PlayableDirector> stoppedCallBack = null)
+        {
+            var cinematic = GetCinematic(type);
+
+            if (cinematic == null || !condition)
+                return;
+
+            cinematic.PlayableDirectory.stopped += stoppedCallBack;
+
+            cinematic.PlayCinematic();
+        } 
     }
 }
