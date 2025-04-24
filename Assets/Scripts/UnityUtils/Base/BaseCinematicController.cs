@@ -28,10 +28,12 @@ namespace UnityUtils.BaseClasses
         {
             var cinematic = GetCinematic(type);
 
-            if (cinematic == null || !condition)
+            if (cinematic == null || cinematic.Director == null || !condition)
                 return;
+            
+            GameEventHandler.OnCinematicStart?.Invoke();
 
-            cinematic.PlayableDirectory.stopped += stoppedCallBack;
+            cinematic.Director.stopped += stoppedCallBack;
 
             cinematic.PlayCinematic();
         } 

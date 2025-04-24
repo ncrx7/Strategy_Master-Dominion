@@ -29,6 +29,7 @@ namespace Core
         private void OnEntryCinematicStopped(PlayableDirector director) 
         {
             director.stopped -= OnEntryCinematicStopped;
+            GameEventHandler.OnCinematicEnd?.Invoke();
         }
         //ENTRY CINEMATIC END
     }

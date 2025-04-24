@@ -7,12 +7,12 @@ namespace UnityUtils.Data
     [Serializable]
     public class CinematicData<TType> where TType : Enum
     {
-        public PlayableDirector PlayableDirectory;
+        public PlayableDirector Director;
         public TType Type;
 
         public void PlayCinematic()
         {
-            PlayableDirectory.Play();
+            Director.Play();
         }
     }
 }

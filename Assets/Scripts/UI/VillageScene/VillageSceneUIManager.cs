@@ -1,3 +1,4 @@
+using System;
 using Data;
 using Enums;
 using UI.VillageScene.PanelControllers;
@@ -8,16 +9,22 @@ namespace UI.VillageScene
 {
     public class VillageSceneUIManager : BaseUIManager<VillageSceneGamePanelType, PlayerData>
     {
-
+        [SerializeField] private GameObject _hud;
 
         private void OnEnable()
         {
             GameEventHandler.OnVillageSceneStart += SetInitialPlatformBasedPanels;
+
+            GameEventHandler.OnCinematicStart += UICinematicStartBehaviour;
+            GameEventHandler.OnCinematicEnd += UICinematicEndBehaviour;
         }
 
         private void OnDisable()
         {
             GameEventHandler.OnVillageSceneStart -= SetInitialPlatformBasedPanels;
+
+            GameEventHandler.OnCinematicStart -= UICinematicStartBehaviour;
+            GameEventHandler.OnCinematicEnd -= UICinematicEndBehaviour;
         }
 
         private void SetInitialPlatformBasedPanels(PlatformType platformType)
@@ -36,6 +43,16 @@ namespace UI.VillageScene
                     Debug.LogWarning("Undefined Platform Type!!");
                     break;
             }
+        }
+
+        private void UICinematicStartBehaviour()
+        {
+            ExecuteUIAction(UIActionType.SetPanelVisibility, false, _hud);
+        }
+
+        private void UICinematicEndBehaviour()
+        {
+            ExecuteUIAction(UIActionType.SetPanelVisibility, true, _hud);
         }
 
 

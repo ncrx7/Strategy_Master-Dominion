@@ -23,12 +23,27 @@ namespace InputHandler
             }
 
             _inputControls.Enable();
+
+            GameEventHandler.OnCinematicStart += DisableInput;
+            GameEventHandler.OnCinematicEnd += EnableInput;
         }
 
         private void OnDisable()
         {
             _inputControls.Player.Move.performed -= HandleLocomotionInputData;
             _inputControls.Player.Move.canceled -= ResetLocomotionInputData;
+
+            GameEventHandler.OnCinematicStart -= DisableInput;
+            GameEventHandler.OnCinematicEnd -= EnableInput;
+        }
+
+        public void EnableInput()
+        {
+            _inputControls.Enable();
+        }
+        public void DisableInput()
+        {
+            _inputControls.Disable();
         }
 
         private void HandleLocomotionInputData(InputAction.CallbackContext context)
