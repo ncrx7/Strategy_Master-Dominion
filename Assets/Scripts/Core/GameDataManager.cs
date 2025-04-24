@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using Data;
 using Data.Scriptable.Heroes;
 using UnityEngine;
 using UnityUtils.BaseClasses;
 using UnityUtils.Core.DataManagment;
 
-namespace Data
+namespace Core
 {
     public class GameDataManager : SingletonBehavior<GameDataManager>
     {

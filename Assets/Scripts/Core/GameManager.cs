@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityUtils.BaseClasses;
 
-namespace GameManagers
+namespace Core
 {
     public class GameManager : SingletonBehavior<GameManager>
     {
