@@ -2,6 +2,7 @@ namespace Enums
 {
     public enum VillageSceneGamePanelType
     {
-        HudPanel
+        HudPanel,
+        MobileControllerPanel
     }
 }

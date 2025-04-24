@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityUtils.BaseClasses;
 
-namespace UI
+namespace UI.MainMenu
 {
     public class MainMenuUIManager : BaseUIManager<MainPanelType, PlayerData>
     {

@@ -1,5 +1,6 @@
 using Data;
 using Enums;
+using UI.VillageScene.PanelControllers;
 using UnityEngine;
 using UnityUtils.BaseClasses;
 
@@ -7,7 +8,7 @@ namespace UI.VillageScene
 {
     public class VillageSceneUIManager : BaseUIManager<VillageSceneGamePanelType, PlayerData>
     {
-        [SerializeField] private GameObject _touchPanel;
+
 
         private void OnEnable()
         {
@@ -25,11 +26,11 @@ namespace UI.VillageScene
             {
                 case PlatformType.PC:
                     Debug.Log("PC ");
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, _touchPanel);
+                    ExecuteUIAction(UIActionType.SetPanelVisibility, false, GetPanel<MobileControllerPanel>(VillageSceneGamePanelType.MobileControllerPanel).gameObject);
                     break;
                 case PlatformType.Mobile:
                 Debug.Log("MOBİLE");
-                    ExecuteUIAction(UIActionType.SetPanelVisibility, true, _touchPanel);
+                    ExecuteUIAction(UIActionType.SetPanelVisibility, true, GetPanel<MobileControllerPanel>(VillageSceneGamePanelType.MobileControllerPanel).gameObject);
                     break;
                 default:
                     Debug.LogWarning("Undefined Platform Type!!");
