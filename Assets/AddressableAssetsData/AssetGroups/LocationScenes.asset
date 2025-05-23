@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LocationScenes
+  m_EditorClassIdentifier: 
+  m_GroupName: LocationScenes
+  m_GUID: ab364649c1ea6bb4cb213ec32b963550
+  m_SerializeEntries:
+  - m_GUID: 47931446b83ff034b8533b617cae43a7
+    m_Address: Assets/Scenes/VillageScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f67631d050d2ed1498c5ae5ef8359cc9
+    m_Address: Assets/Scenes/ArenaScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33bbacaa0bc27554f83cd0c0eec9b72f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fe8abe17e9e31a040a61f2e7f1e751c9, type: 2}
+    - {fileID: 11400000, guid: 1e186e8c3138582479e94fe45adaa869, type: 2}
