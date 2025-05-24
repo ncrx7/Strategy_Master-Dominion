@@ -30,4 +30,29 @@ namespace EventChanells
             this.platformType = platformType;
         }
     }
+
+    public class ArenaSceneStartSignal
+    {
+        public PlatformType platformType;
+
+        public ArenaSceneStartSignal(PlatformType platformType)
+        {
+            this.platformType = platformType;
+        }
+    }
+
+    public class ArenaSceneExitSignal
+    {
+        public PlatformType platformType;
+
+        public ArenaSceneExitSignal(PlatformType platformType)
+        {
+            this.platformType = platformType;
+        }
+    }
+
+    public struct ClickedHomePanelButton { }
+    public struct ClickedInventoryPanelButton { }
+    public struct ClickedShopPanelButton { }
+    public struct ClickedStartGameButton {}
 }

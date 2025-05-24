@@ -23,6 +23,14 @@ namespace ZenjectInstallers
 
             Container.DeclareSignal<VillageSceneStartSignal>();
             Container.DeclareSignal<VillageSceneExitSignal>();
+
+            Container.DeclareSignal<ArenaSceneStartSignal>();
+            Container.DeclareSignal<ArenaSceneExitSignal>();
+
+            Container.DeclareSignal<ClickedHomePanelButton>();
+            Container.DeclareSignal<ClickedInventoryPanelButton>();
+            Container.DeclareSignal<ClickedShopPanelButton>();
+            Container.DeclareSignal<ClickedStartGameButton>();
         }
 
         private void HandleBindings()

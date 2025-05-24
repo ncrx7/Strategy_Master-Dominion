@@ -1009,6 +1009,42 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3494625683915155976, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494625683915155976, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494625683915155976, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060440107594830686, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060440107594830686, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060440107594830686, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158478053485391141, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158478053485391141, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158478053485391141, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5673679968310986532, guid: ae69c182e0650844c94148cb28a36f97, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

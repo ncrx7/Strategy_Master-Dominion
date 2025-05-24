@@ -1,5 +1,6 @@
 using Data;
 using Enums;
+using EventChanells;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityUtils.BaseClasses;
@@ -12,15 +13,18 @@ namespace UI.MainMenu.PanelControllers
     {
         [SerializeField] private Button _playButton;
         [Inject] private SceneLoader _sceneLoader;
+        [Inject] private SignalBus _signalBus;
 
         private void Awake()
         {
-            GameEventHandler.OnClickPlayButton += PlayButtonBehaviour;
+            //GameEventHandler.OnClickPlayButton += PlayButtonBehaviour;
+            _signalBus.Subscribe<ClickedStartGameButton>(PlayButtonBehaviour);
         }
 
         void OnDestroy()
         {
-            GameEventHandler.OnClickPlayButton -= PlayButtonBehaviour;
+            //GameEventHandler.OnClickPlayButton -= PlayButtonBehaviour;
+            _signalBus.Unsubscribe<ClickedStartGameButton>(PlayButtonBehaviour);
         }
 
         public override void OnOpenPanel(PlayerData playerData)

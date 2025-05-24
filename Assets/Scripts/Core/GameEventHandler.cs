@@ -16,17 +16,17 @@ public class GameEventHandler
     #endregion */
     
 
-    #region Arena Scene
+/*     #region Arena Scene
     public static Action OnArenaSceneStart;
     public static Action OnArenaSceneExit;
-    #endregion
+    #endregion */
 
-    #region Main Menu
+/*     #region Main Menu
     public static Action OnClickHomePanelButton;
     public static Action OnClickInventoryPanelButton;
     public static Action OnClickShopPanelButton;
     public static Action OnClickPlayButton;
-    #endregion
+    #endregion */
 
 
     #region GamePlay

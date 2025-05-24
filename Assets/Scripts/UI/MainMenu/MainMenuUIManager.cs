@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Core;
 using Data;
 using Enums;
+using EventChanells;
 using TMPro;
 using UI.MainMenu.PanelControllers;
 using UnityEngine;
@@ -18,12 +19,15 @@ namespace UI.MainMenu
 
         [SerializeField] private GameObject _currentPanelDisplaying;
         [SerializeField] private GameObject _currentButtonObject;
+
         private GameDataManager _gameDataManager;
+        private SignalBus _signalBus;
 
         [Inject]
-        private void InjectDependencies(GameDataManager gameDataManager)
+        private void InjectDependencies(GameDataManager gameDataManager, SignalBus signalBus)
         {
             _gameDataManager = gameDataManager;
+            _signalBus = signalBus;
         }
 
         protected override void Awake()
@@ -49,13 +53,17 @@ namespace UI.MainMenu
         {
             GameEventHandler.OnCompleteGameDataLoad += CompleteGameDataLoadUIBehaviour;
 
-            GameEventHandler.OnClickHomePanelButton += HomePanelButtonBehaviour;
+            //GameEventHandler.OnClickHomePanelButton += HomePanelButtonBehaviour;
+            _signalBus.Subscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
 
-            GameEventHandler.OnClickInventoryPanelButton += InventoryPanelButtonBehaviour;
+            //GameEventHandler.OnClickInventoryPanelButton += InventoryPanelButtonBehaviour;
+            _signalBus.Subscribe<ClickedInventoryPanelButton>(InventoryPanelButtonBehaviour);
 
-            GameEventHandler.OnClickShopPanelButton += ShopPanelButtonBehaviour;
+            //GameEventHandler.OnClickShopPanelButton += ShopPanelButtonBehaviour;
+            _signalBus.Subscribe<ClickedShopPanelButton>(ShopPanelButtonBehaviour);
 
             GameEventHandler.OnSceneLoadStart += OnSceneLoadStart;
+            
 
             GameEventHandler.OnSceneLoadFinished += OnSceneLoadFinished;
         }
@@ -64,11 +72,14 @@ namespace UI.MainMenu
         {
             GameEventHandler.OnCompleteGameDataLoad -= CompleteGameDataLoadUIBehaviour;
 
-            GameEventHandler.OnClickHomePanelButton -= HomePanelButtonBehaviour;
+            //GameEventHandler.OnClickHomePanelButton -= HomePanelButtonBehaviour;
+            _signalBus.Unsubscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
 
-            GameEventHandler.OnClickInventoryPanelButton -= InventoryPanelButtonBehaviour;
+            //GameEventHandler.OnClickInventoryPanelButton -= InventoryPanelButtonBehaviour;
+            _signalBus.Unsubscribe<ClickedInventoryPanelButton>(InventoryPanelButtonBehaviour);
 
-            GameEventHandler.OnClickShopPanelButton -= ShopPanelButtonBehaviour;
+            //GameEventHandler.OnClickShopPanelButton -= ShopPanelButtonBehaviour;
+            _signalBus.Unsubscribe<ClickedShopPanelButton>(ShopPanelButtonBehaviour);
 
             GameEventHandler.OnSceneLoadStart -= OnSceneLoadStart;
 
@@ -148,14 +159,14 @@ namespace UI.MainMenu
         {
             if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
             {
-                overlayPanel.GetHomePanelButton.onClick.AddListener(() => GameEventHandler.OnClickHomePanelButton?.Invoke());
-                overlayPanel.GetInventoryPanelButton.onClick.AddListener(() => GameEventHandler.OnClickInventoryPanelButton?.Invoke());
-                overlayPanel.GetShopPanelButton.onClick.AddListener(() => GameEventHandler.OnClickShopPanelButton?.Invoke());
+                overlayPanel.GetHomePanelButton.onClick.AddListener(() => _signalBus.TryFire(new ClickedHomePanelButton()));
+                overlayPanel.GetInventoryPanelButton.onClick.AddListener(() => _signalBus.TryFire(new ClickedInventoryPanelButton()));
+                overlayPanel.GetShopPanelButton.onClick.AddListener(() => _signalBus.TryFire(new ClickedShopPanelButton()));
             }
 
             if (TryGetPanel<HomePanel>(MainPanelType.HomePanel, out HomePanel homePanel))
             {
-                homePanel.GetPlayButton.onClick.AddListener(() => GameEventHandler.OnClickPlayButton?.Invoke());
+                homePanel.GetPlayButton.onClick.AddListener(() => _signalBus.TryFire(new ClickedStartGameButton()));
             }
         }
 
