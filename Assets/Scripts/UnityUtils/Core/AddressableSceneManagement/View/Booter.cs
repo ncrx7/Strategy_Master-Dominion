@@ -23,12 +23,19 @@ namespace UnityUtils.SceneManagement.Views
                 Debug.LogError("Singleton booter broken!!");
             }
         }
-        
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static async void Init()
         {
-            Debug.Log("Booting game..");
-            await SceneManager.LoadSceneAsync("BootScene", LoadSceneMode.Single);
+            if (SceneManager.GetActiveScene().name != "BootScene")
+            {
+                Debug.Log("Booting game..");
+                await SceneManager.LoadSceneAsync("BootScene", LoadSceneMode.Single);
+            }
+            else
+            {
+                Debug.LogWarning("BootScene is already the active scene. Skipping load boot scene.");
+            }
         }
     }
 }
