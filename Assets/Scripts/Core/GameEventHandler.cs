@@ -10,10 +10,10 @@ public class GameEventHandler
     public static Action OnSceneLoadFinished;
     #endregion
 
-    #region Village Scene
+/*     #region Village Scene
     public static Action<PlatformType> OnVillageSceneStart;
     public static Action<PlatformType> OnVillageSceneExit;
-    #endregion
+    #endregion */
     
 
     #region Arena Scene

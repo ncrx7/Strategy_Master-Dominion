@@ -1,3 +1,4 @@
+using Enums;
 using UnityEngine;
 
 namespace EventChanells
@@ -6,7 +7,27 @@ namespace EventChanells
     {
         public SceneLoadedSignal()
         {
-            
+
+        }
+    }
+
+    public class VillageSceneStartSignal
+    {
+        public PlatformType platformType;
+
+        public VillageSceneStartSignal(PlatformType platformType)
+        {
+            this.platformType = platformType;
+        }
+    }
+
+    public class VillageSceneExitSignal
+    {
+        public PlatformType platformType;
+
+        public VillageSceneExitSignal(PlatformType platformType)
+        {
+            this.platformType = platformType;
         }
     }
 }

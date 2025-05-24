@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Data;
 using Enums;
+using EventChanells;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityUtils.BaseClasses;
@@ -11,25 +12,27 @@ namespace Core
     public class CinematicController : BaseCinematicController<CinematicType>
     {
         private GameDataManager _gameDataManager;
+        private SignalBus _signalBus;
 
         [Inject]
-        private void InjectDependencies(GameDataManager gameDataManager)
+        private void InjectDependencies(GameDataManager gameDataManager, SignalBus signalBus)
         {
             _gameDataManager = gameDataManager;
+            _signalBus = signalBus;
         }
 
         private void OnEnable()
         {
-            GameEventHandler.OnVillageSceneStart += EntryCinematicBehaviour;
+            _signalBus.Subscribe<VillageSceneStartSignal>(EntryCinematicBehaviour);
         }
 
         private void OnDisable()
         {
-            GameEventHandler.OnVillageSceneStart -= EntryCinematicBehaviour;
+            _signalBus.Unsubscribe<VillageSceneStartSignal>(EntryCinematicBehaviour);
         }
 
         //ENTRY CINEMATIC HEAD
-        private void EntryCinematicBehaviour(PlatformType platformType)
+        private void EntryCinematicBehaviour(VillageSceneStartSignal signalResponse)
         {
             PlayCinematic(CinematicType.StarterCinematic, _gameDataManager.GetPlayerDataObjectReference().IsFirstEntry, OnEntryCinematicStopped);
         }
