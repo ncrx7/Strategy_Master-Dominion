@@ -3,9 +3,11 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using Data;
 using Data.Scriptable.Heroes;
+using EventChanells;
 using UnityEngine;
 using UnityUtils.BaseClasses;
 using UnityUtils.Core.DataManagment;
+using Zenject;
 
 namespace Core
 {
@@ -15,6 +17,14 @@ namespace Core
         [SerializeField] PlayerData _playerData;
         DataWriterAndReader<PlayerData> _dataWriterAndReader;
         public bool IsDataLoadFinished = false;
+
+        private SignalBus _signalBus;
+
+        [Inject]
+        private void InjectDependencies(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+        }
 
         private void Awake()
         {
@@ -32,7 +42,8 @@ namespace Core
             await LoadHeroFixedData();
 
             IsDataLoadFinished = true;
-            GameEventHandler.OnCompleteGameDataLoad?.Invoke(_playerData);
+            
+            _signalBus.TryFire(new CompletedGameDataLoadingSignal(_playerData));
         }
 
         private async UniTask LoadPlayerDataFile()

@@ -1,3 +1,4 @@
+using Data;
 using Enums;
 using UnityEngine;
 
@@ -48,6 +49,16 @@ namespace EventChanells
         public ArenaSceneExitSignal(PlatformType platformType)
         {
             this.platformType = platformType;
+        }
+    }
+
+    public class CompletedGameDataLoadingSignal
+    {
+        public PlayerData playerData;
+
+        public CompletedGameDataLoadingSignal(PlayerData playerData)
+        {
+            this.playerData = playerData;
         }
     }
 

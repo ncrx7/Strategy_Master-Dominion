@@ -31,6 +31,8 @@ namespace ZenjectInstallers
             Container.DeclareSignal<ClickedInventoryPanelButton>();
             Container.DeclareSignal<ClickedShopPanelButton>();
             Container.DeclareSignal<ClickedStartGameButton>();
+
+            Container.DeclareSignal<CompletedGameDataLoadingSignal>();
         }
 
         private void HandleBindings()

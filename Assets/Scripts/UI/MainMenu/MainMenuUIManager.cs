@@ -51,7 +51,8 @@ namespace UI.MainMenu
 
         private void RegisterUIActions()
         {
-            GameEventHandler.OnCompleteGameDataLoad += CompleteGameDataLoadUIBehaviour;
+            //GameEventHandler.OnCompleteGameDataLoad += CompleteGameDataLoadUIBehaviour;
+            _signalBus.Subscribe<CompletedGameDataLoadingSignal>(CompleteGameDataLoadUIBehaviour);
 
             //GameEventHandler.OnClickHomePanelButton += HomePanelButtonBehaviour;
             _signalBus.Subscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
@@ -70,7 +71,8 @@ namespace UI.MainMenu
 
         private void UnRegisterUIActions()
         {
-            GameEventHandler.OnCompleteGameDataLoad -= CompleteGameDataLoadUIBehaviour;
+            //GameEventHandler.OnCompleteGameDataLoad -= CompleteGameDataLoadUIBehaviour;
+            _signalBus.Unsubscribe<CompletedGameDataLoadingSignal>(CompleteGameDataLoadUIBehaviour);
 
             //GameEventHandler.OnClickHomePanelButton -= HomePanelButtonBehaviour;
             _signalBus.Unsubscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
@@ -102,12 +104,12 @@ namespace UI.MainMenu
             BindButtonActions();
         }
 
-        private void CompleteGameDataLoadUIBehaviour(PlayerData playerData)
+        private void CompleteGameDataLoadUIBehaviour(CompletedGameDataLoadingSignal signalResponse)
         {
             if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out OverlayPanel overlayPanel))
             {
-                ExecuteUIAction(UIActionType.SetText, playerData.GoldAmount.ToString(), overlayPanel.GetgoldText);
-                ExecuteUIAction(UIActionType.SetText, playerData.CurrentLevel.ToString(), overlayPanel.GetLevelText);
+                ExecuteUIAction(UIActionType.SetText, signalResponse.playerData.GoldAmount.ToString(), overlayPanel.GetgoldText);
+                ExecuteUIAction(UIActionType.SetText, signalResponse.playerData.CurrentLevel.ToString(), overlayPanel.GetLevelText);
             }
 
             ExecuteUIAction(UIActionType.SetPanelVisibility, false, _mainPanelMap[MainPanelType.LoadingPanel].gameObject);

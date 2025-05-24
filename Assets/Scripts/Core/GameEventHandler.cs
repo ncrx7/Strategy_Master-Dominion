@@ -30,7 +30,7 @@ public class GameEventHandler
 
 
     #region GamePlay
-    public static Action<PlayerData> OnCompleteGameDataLoad;
+    //public static Action<PlayerData> OnCompleteGameDataLoad;
     public static Action OnCinematicStart;
     public static Action OnCinematicEnd;
     #endregion
