@@ -3,13 +3,15 @@ using Enums;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityUtils.BaseClasses;
-using UnityUtils.StaticHelpers;
+using UnityUtils.SceneManagement.Views;
+using Zenject;
 
 namespace UI.MainMenu.PanelControllers
 {
     public class HomePanel : BasePanel<MainPanelType, PlayerData>
     {
         [SerializeField] private Button _playButton;
+        [Inject] private SceneLoader _sceneLoader;
 
         private void Awake()
         {
@@ -35,7 +37,7 @@ namespace UI.MainMenu.PanelControllers
 
         private async void PlayButtonBehaviour()
         {
-           await SceneLoader.LoadSceneAsync(1);
+            await _sceneLoader.LoadSceneGroup(1, true);
         }
 
         public Button GetPlayButton => _playButton;

@@ -13,7 +13,6 @@ namespace ZenjectInstallers
 
             DeclareSignals();
 
-            //Container.Bind<SceneLoader>().FromComponentInHierarchy().AsSingle();
         }
 
         private void DeclareSignals()
