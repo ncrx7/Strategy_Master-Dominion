@@ -75,6 +75,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2777514112466343427}
+  - {fileID: 4277402991156179828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7098131314267800037
@@ -106,3 +107,65 @@ MonoBehaviour:
       _missingHandlerDefaultResponse: 2
       _requireStrictUnsubscribe: 0
       _defaultAsyncTickPriority: 1
+--- !u!1 &6665408484353791188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4277402991156179828}
+  - component: {fileID: 6055678669117760650}
+  m_Layer: 0
+  m_Name: GameDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4277402991156179828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665408484353791188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1199677409623215495}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6055678669117760650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665408484353791188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd724e91b4689a4e81cf48579d1e618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fixedHeroDataList:
+  - {fileID: 11400000, guid: cdb9ed4f439bf554c815facddbfd7d3d, type: 2}
+  - {fileID: 11400000, guid: 804e42cb358896042a97c414e9bbc3ed, type: 2}
+  - {fileID: 11400000, guid: 64041c9fb5c0a1545bd8a8828116e602, type: 2}
+  - {fileID: 11400000, guid: b8c27958a5a6a0b498bad45359fe5d2f, type: 2}
+  - {fileID: 11400000, guid: 87ba35dd483e24f4da3c0ae564802c0c, type: 2}
+  - {fileID: 11400000, guid: 7f5184279bdce964db9894894f19983d, type: 2}
+  - {fileID: 11400000, guid: 5377a2ced1fb9f446a179ccd97ccf0f0, type: 2}
+  - {fileID: 11400000, guid: 20ef6ecfc1ee0524d805256ba461fcec, type: 2}
+  - {fileID: 11400000, guid: 26e0aed666683d44a9075ce92a0cada0, type: 2}
+  _playerData:
+    CurrentLevel: 0
+    CurrentXP: 0
+    Heroes: []
+    GoldAmount: 0
+    IncreasePoint: 0
+    IsFirstEntry: 0
+  IsDataLoadFinished: 0

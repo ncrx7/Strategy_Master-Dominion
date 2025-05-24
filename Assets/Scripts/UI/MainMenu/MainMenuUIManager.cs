@@ -8,6 +8,7 @@ using UI.MainMenu.PanelControllers;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityUtils.BaseClasses;
+using Zenject;
 
 namespace UI.MainMenu
 {
@@ -17,6 +18,13 @@ namespace UI.MainMenu
 
         [SerializeField] private GameObject _currentPanelDisplaying;
         [SerializeField] private GameObject _currentButtonObject;
+        private GameDataManager _gameDataManager;
+
+        [Inject]
+        private void InjectDependencies(GameDataManager gameDataManager)
+        {
+            _gameDataManager = gameDataManager;
+        }
 
         protected override void Awake()
         {
@@ -123,7 +131,7 @@ namespace UI.MainMenu
             if (TryGetPanel<LoadingPanel>(MainPanelType.LoadingPanel, out LoadingPanel loadingPanel))
             {
                 ExecuteUIAction(UIActionType.SetPanelVisibility, true, loadingPanel.gameObject);
-                loadingPanel.OnOpenPanel(GameDataManager.Instance.GetPlayerDataObjectReference());
+                loadingPanel.OnOpenPanel(_gameDataManager.GetPlayerDataObjectReference());
             }
         }
 
@@ -132,7 +140,7 @@ namespace UI.MainMenu
             if (TryGetPanel<LoadingPanel>(MainPanelType.LoadingPanel, out LoadingPanel loadingPanel))
             {
                 ExecuteUIAction(UIActionType.SetPanelVisibility, false, loadingPanel.gameObject);
-                loadingPanel.OnClosePanel(GameDataManager.Instance.GetPlayerDataObjectReference());
+                loadingPanel.OnClosePanel(_gameDataManager.GetPlayerDataObjectReference());
             }
         }
 
@@ -159,7 +167,7 @@ namespace UI.MainMenu
             if (_currentPanelDisplaying != null)
             {
                 ExecuteUIAction(UIActionType.SetPanelVisibility, false, _currentPanelDisplaying);
-                panelObject.OnClosePanel(GameDataManager.Instance.GetPlayerDataObjectReference());
+                panelObject.OnClosePanel(_gameDataManager.GetPlayerDataObjectReference());
             }
 
             buttonObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
@@ -169,7 +177,7 @@ namespace UI.MainMenu
 
             ExecuteUIAction(UIActionType.SetPanelVisibility, true, _currentPanelDisplaying);
 
-            panelObject.OnOpenPanel(GameDataManager.Instance.GetPlayerDataObjectReference());
+            panelObject.OnOpenPanel(_gameDataManager.GetPlayerDataObjectReference());
         }
     }
 }

@@ -1,3 +1,4 @@
+using Core;
 using EventChanells;
 using UnityEngine;
 using UnityUtils.SceneManagement.Views;
@@ -13,11 +14,17 @@ namespace ZenjectInstallers
 
             DeclareSignals();
 
+            HandleBindings();
         }
 
         private void DeclareSignals()
         {
             Container.DeclareSignal<SceneLoadedSignal>();
+        }
+
+        private void HandleBindings()
+        {
+            Container.Bind<GameDataManager>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

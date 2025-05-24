@@ -4,11 +4,19 @@ using Enums;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityUtils.BaseClasses;
+using Zenject;
 
 namespace Core
 {
     public class CinematicController : BaseCinematicController<CinematicType>
     {
+        private GameDataManager _gameDataManager;
+
+        [Inject]
+        private void InjectDependencies(GameDataManager gameDataManager)
+        {
+            _gameDataManager = gameDataManager;
+        }
 
         private void OnEnable()
         {
@@ -23,10 +31,10 @@ namespace Core
         //ENTRY CINEMATIC HEAD
         private void EntryCinematicBehaviour(PlatformType platformType)
         {
-            PlayCinematic(CinematicType.StarterCinematic, GameDataManager.Instance.GetPlayerDataObjectReference().IsFirstEntry, OnEntryCinematicStopped );
+            PlayCinematic(CinematicType.StarterCinematic, _gameDataManager.GetPlayerDataObjectReference().IsFirstEntry, OnEntryCinematicStopped);
         }
 
-        private void OnEntryCinematicStopped(PlayableDirector director) 
+        private void OnEntryCinematicStopped(PlayableDirector director)
         {
             director.stopped -= OnEntryCinematicStopped;
             GameEventHandler.OnCinematicEnd?.Invoke();

@@ -9,21 +9,15 @@ using UnityUtils.Core.DataManagment;
 
 namespace Core
 {
-    public class GameDataManager : SingletonBehavior<GameDataManager>
+    public class GameDataManager : MonoBehaviour
     {
         [SerializeField] private List<FixedHeroData> _fixedHeroDataList;
         [SerializeField] PlayerData _playerData;
         DataWriterAndReader<PlayerData> _dataWriterAndReader;
         public bool IsDataLoadFinished = false;
 
-        protected void Awake()
+        private void Awake()
         {
-            base.Awake();
-
-            transform.parent = null;
-
-            DontDestroyOnLoad(gameObject);
-
             _dataWriterAndReader = new DataWriterAndReader<PlayerData>(Application.persistentDataPath, "Player_Data");
         }
 
