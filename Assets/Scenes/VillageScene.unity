@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cinematics:
-  - PlayableDirectory: {fileID: 0}
+  - Director: {fileID: 0}
     Type: 0
 --- !u!1 &128278489
 GameObject:
@@ -999,7 +999,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &1626274061
 RectTransform:
