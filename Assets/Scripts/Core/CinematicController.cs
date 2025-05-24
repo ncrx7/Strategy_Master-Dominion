@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Data;
 using Enums;
@@ -31,6 +32,13 @@ namespace Core
             _signalBus.Unsubscribe<VillageSceneStartSignal>(EntryCinematicBehaviour);
         }
 
+        protected override void PlayCinematic(CinematicType type, bool condition, Action<PlayableDirector> stoppedCallBack = null)
+        {
+            base.PlayCinematic(type, condition, stoppedCallBack);
+
+            _signalBus.TryFire(new CinematicStartedSignal());
+        }
+
         //ENTRY CINEMATIC HEAD
         private void EntryCinematicBehaviour(VillageSceneStartSignal signalResponse)
         {
@@ -40,7 +48,8 @@ namespace Core
         private void OnEntryCinematicStopped(PlayableDirector director)
         {
             director.stopped -= OnEntryCinematicStopped;
-            GameEventHandler.OnCinematicEnd?.Invoke();
+
+            _signalBus.TryFire(new CinematicEndSignal());
         }
         //ENTRY CINEMATIC END
     }

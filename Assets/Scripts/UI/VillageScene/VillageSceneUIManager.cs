@@ -24,16 +24,16 @@ namespace UI.VillageScene
         {
             _signalBus.Subscribe<VillageSceneStartSignal>(SetInitialPlatformBasedPanels);
 
-            GameEventHandler.OnCinematicStart += UICinematicStartBehaviour;
-            GameEventHandler.OnCinematicEnd += UICinematicEndBehaviour;
+            _signalBus.Subscribe<CinematicStartedSignal>(UICinematicStartBehaviour);
+            _signalBus.Subscribe<CinematicEndSignal>(UICinematicEndBehaviour);
         }
 
         private void OnDisable()
         {
             _signalBus.Unsubscribe<VillageSceneStartSignal>(SetInitialPlatformBasedPanels);
 
-            GameEventHandler.OnCinematicStart -= UICinematicStartBehaviour;
-            GameEventHandler.OnCinematicEnd -= UICinematicEndBehaviour;
+            _signalBus.Unsubscribe<CinematicStartedSignal>(UICinematicStartBehaviour);
+            _signalBus.Unsubscribe<CinematicEndSignal>(UICinematicEndBehaviour);
         }
 
         //TODO: BIND PLATFORM UI SERVICE INTERFACE HERE INSTEAD SWITCH CASE

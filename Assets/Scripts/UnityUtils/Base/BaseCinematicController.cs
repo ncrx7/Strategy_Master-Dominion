@@ -24,14 +24,12 @@ namespace UnityUtils.BaseClasses
             return _cinematicsMap[type];
         }
 
-        protected void PlayCinematic(TType type, bool condition, Action<PlayableDirector> stoppedCallBack = null)
+        protected virtual void PlayCinematic(TType type, bool condition, Action<PlayableDirector> stoppedCallBack = null)
         {
             var cinematic = GetCinematic(type);
 
             if (cinematic == null || cinematic.Director == null || !condition)
                 return;
-            
-            GameEventHandler.OnCinematicStart?.Invoke();
 
             cinematic.Director.stopped += stoppedCallBack;
 

@@ -62,6 +62,9 @@ namespace EventChanells
         }
     }
 
+    public struct CinematicStartedSignal {}
+    public struct CinematicEndSignal {}
+
     public struct ClickedHomePanelButton { }
     public struct ClickedInventoryPanelButton { }
     public struct ClickedShopPanelButton { }

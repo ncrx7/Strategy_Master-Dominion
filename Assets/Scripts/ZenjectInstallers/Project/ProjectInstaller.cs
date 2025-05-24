@@ -33,6 +33,9 @@ namespace ZenjectInstallers
             Container.DeclareSignal<ClickedStartGameButton>();
 
             Container.DeclareSignal<CompletedGameDataLoadingSignal>();
+
+            Container.DeclareSignal<CinematicStartedSignal>();
+            Container.DeclareSignal<CinematicEndSignal>();
         }
 
         private void HandleBindings()

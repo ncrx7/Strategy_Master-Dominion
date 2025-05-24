@@ -1,6 +1,8 @@
+using EventChanells;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityUtils.BaseClasses;
+using Zenject;
 
 namespace InputHandler
 {
@@ -11,6 +13,14 @@ namespace InputHandler
         [Header("Player Movement fields")]
         [SerializeField] private Vector2 _movementInput;
         public float MoveAmount { get; private set; }
+
+        private SignalBus _signalBus;
+
+        [Inject]
+        private void InjectDependencies(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+        }
 
         private void OnEnable()
         {
@@ -24,8 +34,8 @@ namespace InputHandler
 
             _inputControls.Enable();
 
-            GameEventHandler.OnCinematicStart += DisableInput;
-            GameEventHandler.OnCinematicEnd += EnableInput;
+            _signalBus.Subscribe<CinematicStartedSignal>(DisableInput);
+            _signalBus.Subscribe<CinematicEndSignal>(EnableInput);
         }
 
         private void OnDisable()
@@ -33,8 +43,8 @@ namespace InputHandler
             _inputControls.Player.Move.performed -= HandleLocomotionInputData;
             _inputControls.Player.Move.canceled -= ResetLocomotionInputData;
 
-            GameEventHandler.OnCinematicStart -= DisableInput;
-            GameEventHandler.OnCinematicEnd -= EnableInput;
+            _signalBus.Unsubscribe<CinematicStartedSignal>(DisableInput);
+            _signalBus.Unsubscribe<CinematicEndSignal>(EnableInput);
         }
 
         public void EnableInput()
