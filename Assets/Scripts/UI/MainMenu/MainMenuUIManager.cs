@@ -83,6 +83,7 @@ namespace UI.MainMenu
             if (TryGetPanel<OverlayPanel>(MainPanelType.OverlayPanel, out var overlayPanel))
             {
                 _currentButtonObject = overlayPanel.GetHomePanelButton.gameObject;
+                overlayPanel.OnOpenPanel(_gameDataManager.GetPlayerDataObjectReference());
                 //_currentButtonObject = GetPanel<OverlayPanel>(MainPanelType.OverlayPanel).GetHomePanelButton.gameObject;
             }
 
