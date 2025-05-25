@@ -32,17 +32,17 @@ namespace Core
             _signalBus.Unsubscribe<VillageSceneStartSignal>(EntryCinematicBehaviour);
         }
 
-        protected override void PlayCinematic(CinematicType type, bool condition, Action<PlayableDirector> stoppedCallBack = null)
+        protected override void PlayCinematic(CinematicType type, bool condition, Action startCallback = null, Action<PlayableDirector> stoppedCallBack = null)
         {
-            base.PlayCinematic(type, condition, stoppedCallBack);
+            base.PlayCinematic(type, condition, startCallback, stoppedCallBack);
 
-            _signalBus.TryFire(new CinematicStartedSignal());
         }
 
         //ENTRY CINEMATIC HEAD
         private void EntryCinematicBehaviour(VillageSceneStartSignal signalResponse)
         {
-            PlayCinematic(CinematicType.StarterCinematic, _gameDataManager.GetPlayerDataObjectReference().IsFirstEntry, OnEntryCinematicStopped);
+            PlayCinematic(CinematicType.StarterCinematic, _gameDataManager.GetPlayerDataObjectReference().IsFirstEntry,
+                () => _signalBus.TryFire(new CinematicStartedSignal()), OnEntryCinematicStopped);
         }
 
         private void OnEntryCinematicStopped(PlayableDirector director)

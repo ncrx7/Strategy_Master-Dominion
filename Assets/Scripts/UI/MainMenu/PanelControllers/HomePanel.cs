@@ -41,7 +41,10 @@ namespace UI.MainMenu.PanelControllers
 
         private async void PlayButtonBehaviour()
         {
-            await _sceneLoader.LoadSceneGroup(1, true);
+            await _sceneLoader.LoadSceneGroup(1, true,
+                () => _signalBus.TryFire(new SceneLoadedStartedSignal()),
+                () => _signalBus.TryFire(new SceneLoadedEndSignal())
+                );
         }
 
         public Button GetPlayButton => _playButton;

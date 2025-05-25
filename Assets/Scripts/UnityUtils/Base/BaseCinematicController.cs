@@ -24,7 +24,7 @@ namespace UnityUtils.BaseClasses
             return _cinematicsMap[type];
         }
 
-        protected virtual void PlayCinematic(TType type, bool condition, Action<PlayableDirector> stoppedCallBack = null)
+        protected virtual void PlayCinematic(TType type, bool condition, Action startCallback = null, Action<PlayableDirector> stoppedCallBack = null)
         {
             var cinematic = GetCinematic(type);
 
@@ -34,6 +34,8 @@ namespace UnityUtils.BaseClasses
             cinematic.Director.stopped += stoppedCallBack;
 
             cinematic.PlayCinematic();
+
+            startCallback?.Invoke();
         } 
     }
 }

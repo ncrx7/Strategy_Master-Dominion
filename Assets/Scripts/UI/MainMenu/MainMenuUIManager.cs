@@ -51,41 +51,32 @@ namespace UI.MainMenu
 
         private void RegisterUIActions()
         {
-            //GameEventHandler.OnCompleteGameDataLoad += CompleteGameDataLoadUIBehaviour;
             _signalBus.Subscribe<CompletedGameDataLoadingSignal>(CompleteGameDataLoadUIBehaviour);
 
-            //GameEventHandler.OnClickHomePanelButton += HomePanelButtonBehaviour;
             _signalBus.Subscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
 
-            //GameEventHandler.OnClickInventoryPanelButton += InventoryPanelButtonBehaviour;
             _signalBus.Subscribe<ClickedInventoryPanelButton>(InventoryPanelButtonBehaviour);
 
-            //GameEventHandler.OnClickShopPanelButton += ShopPanelButtonBehaviour;
             _signalBus.Subscribe<ClickedShopPanelButton>(ShopPanelButtonBehaviour);
 
-            GameEventHandler.OnSceneLoadStart += OnSceneLoadStart;
-            
+            _signalBus.Subscribe<SceneLoadedStartedSignal>(OnSceneLoadStart);
 
-            GameEventHandler.OnSceneLoadFinished += OnSceneLoadFinished;
+            _signalBus.Subscribe<SceneLoadedEndSignal>(OnSceneLoadFinished);
         }
 
         private void UnRegisterUIActions()
         {
-            //GameEventHandler.OnCompleteGameDataLoad -= CompleteGameDataLoadUIBehaviour;
             _signalBus.Unsubscribe<CompletedGameDataLoadingSignal>(CompleteGameDataLoadUIBehaviour);
 
-            //GameEventHandler.OnClickHomePanelButton -= HomePanelButtonBehaviour;
             _signalBus.Unsubscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
 
-            //GameEventHandler.OnClickInventoryPanelButton -= InventoryPanelButtonBehaviour;
             _signalBus.Unsubscribe<ClickedInventoryPanelButton>(InventoryPanelButtonBehaviour);
 
-            //GameEventHandler.OnClickShopPanelButton -= ShopPanelButtonBehaviour;
             _signalBus.Unsubscribe<ClickedShopPanelButton>(ShopPanelButtonBehaviour);
 
-            GameEventHandler.OnSceneLoadStart -= OnSceneLoadStart;
+            _signalBus.Unsubscribe<SceneLoadedStartedSignal>(OnSceneLoadStart);
 
-            GameEventHandler.OnSceneLoadFinished -= OnSceneLoadFinished;
+            _signalBus.Unsubscribe<SceneLoadedEndSignal>(OnSceneLoadFinished);
         }
 
         private void InitializeUI()

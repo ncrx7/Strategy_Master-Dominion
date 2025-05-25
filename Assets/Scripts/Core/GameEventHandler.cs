@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class GameEventHandler 
 {
-    #region Scene Load Events
+/*     #region Scene Load Events
     public static Action OnSceneLoadStart;
     public static Action OnSceneLoadFinished;
-    #endregion
+    #endregion */
 
 /*     #region Village Scene
     public static Action<PlatformType> OnVillageSceneStart;
@@ -29,9 +29,9 @@ public class GameEventHandler
     #endregion */
 
 
-    #region GamePlay
+/*     #region GamePlay
     //public static Action<PlayerData> OnCompleteGameDataLoad;
     public static Action OnCinematicStart;
     public static Action OnCinematicEnd;
-    #endregion
+    #endregion */
 }

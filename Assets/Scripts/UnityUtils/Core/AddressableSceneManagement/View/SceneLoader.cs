@@ -40,7 +40,7 @@ namespace UnityUtils.SceneManagement.Views
             _loadingBar.fillAmount = Mathf.Lerp(currentFillAmount, _targetProgress, Time.deltaTime * dynamicFillSpeed);
         }
 
-        public async UniTask LoadSceneGroup(int index, bool reload)
+        public async UniTask LoadSceneGroup(int index, bool reload, Action sceneLoadStart = null, Action sceneLoadFinish = null)
         {
             _loadingBar.fillAmount = 0f;
             _targetProgress = 1;
@@ -54,9 +54,13 @@ namespace UnityUtils.SceneManagement.Views
             LoadingProgress progress = new LoadingProgress();
             progress.Progressed += target => _targetProgress = Mathf.Max(target, _targetProgress);
 
+            sceneLoadStart?.Invoke();
+
             EnableLoadingCanvas();
             await manager.LoadScenes(_sceneGroups[index], progress, reload);
             EnableLoadingCanvas(false);
+
+            sceneLoadFinish?.Invoke();
         }
 
         private void EnableLoadingCanvas(bool enable = true)

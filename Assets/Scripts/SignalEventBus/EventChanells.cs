@@ -4,9 +4,17 @@ using UnityEngine;
 
 namespace EventChanells
 {
-    public class SceneLoadedSignal
+    public class SceneLoadedStartedSignal
     {
-        public SceneLoadedSignal()
+        public SceneLoadedStartedSignal()
+        {
+
+        }
+    }
+
+    public class SceneLoadedEndSignal
+    {
+        public SceneLoadedEndSignal()
         {
 
         }
@@ -62,11 +70,11 @@ namespace EventChanells
         }
     }
 
-    public struct CinematicStartedSignal {}
-    public struct CinematicEndSignal {}
+    public struct CinematicStartedSignal { }
+    public struct CinematicEndSignal { }
 
     public struct ClickedHomePanelButton { }
     public struct ClickedInventoryPanelButton { }
     public struct ClickedShopPanelButton { }
-    public struct ClickedStartGameButton {}
+    public struct ClickedStartGameButton { }
 }

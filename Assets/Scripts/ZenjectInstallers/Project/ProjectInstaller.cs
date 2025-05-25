@@ -19,7 +19,8 @@ namespace ZenjectInstallers
 
         private void DeclareSignals()
         {
-            Container.DeclareSignal<SceneLoadedSignal>();
+            Container.DeclareSignal<SceneLoadedStartedSignal>();
+            Container.DeclareSignal<SceneLoadedEndSignal>();
 
             Container.DeclareSignal<VillageSceneStartSignal>();
             Container.DeclareSignal<VillageSceneExitSignal>();
