@@ -22,11 +22,6 @@ namespace UnityUtils.SceneManagement.Views
 
         public readonly SceneGroupManager manager = new SceneGroupManager();
 
-        async void Start()
-        {
-            await LoadSceneGroup(0, false);
-        }
-
         private void Update()
         {
             if (!_isLoading)

@@ -7,25 +7,17 @@ using UnityEngine.UIElements;
 
 namespace UnityUtils.SceneManagement.Views
 {
-    public class Booter : MonoBehaviour
+    public class BaseBooter : MonoBehaviour
     {
-        public static Booter Instance { get; private set; }
-
-        private void Awake()
+        private void Start()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(this);
-                Debug.LogError("Singleton booter broken!!");
-            }
+            InitGame();
         }
+        
+        protected virtual void InitGame() { }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static async void Init()
+        private static async void InitBootScene()
         {
             if (SceneManager.GetActiveScene().name != "BootScene")
             {

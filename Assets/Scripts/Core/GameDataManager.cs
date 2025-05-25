@@ -31,13 +31,15 @@ namespace Core
             _dataWriterAndReader = new DataWriterAndReader<PlayerData>(Application.persistentDataPath, "Player_Data");
         }
 
-        private void Start()
+/*         private void Start()
         {
             InitializeData();
-        }
+        } */
 
-        private async void InitializeData()
+        public async UniTask InitializeData()
         {
+            _signalBus.TryFire(new StartedGameDataLoadingSignal());
+
             await LoadPlayerDataFile();
             await LoadHeroFixedData();
 

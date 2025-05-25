@@ -33,6 +33,7 @@ namespace ZenjectInstallers
             Container.DeclareSignal<ClickedShopPanelButton>();
             Container.DeclareSignal<ClickedStartGameButton>();
 
+            Container.DeclareSignal<StartedGameDataLoadingSignal>();
             Container.DeclareSignal<CompletedGameDataLoadingSignal>();
 
             Container.DeclareSignal<CinematicStartedSignal>();

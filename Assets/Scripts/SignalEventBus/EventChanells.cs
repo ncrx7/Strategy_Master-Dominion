@@ -60,6 +60,8 @@ namespace EventChanells
         }
     }
 
+    public struct StartedGameDataLoadingSignal {}
+
     public class CompletedGameDataLoadingSignal
     {
         public PlayerData playerData;

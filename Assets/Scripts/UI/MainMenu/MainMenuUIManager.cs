@@ -39,8 +39,6 @@ namespace UI.MainMenu
 
         private void OnEnable()
         {
-            ExecuteUIAction(UIActionType.SetPanelVisibility, true, _mainPanelMap[MainPanelType.LoadingPanel].gameObject);
-
             RegisterUIActions();
         }
 
@@ -52,6 +50,7 @@ namespace UI.MainMenu
         private void RegisterUIActions()
         {
             _signalBus.Subscribe<CompletedGameDataLoadingSignal>(CompleteGameDataLoadUIBehaviour);
+            _signalBus.Subscribe<StartedGameDataLoadingSignal>(StartGameDataLoadUIBehaviour);
 
             _signalBus.Subscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
 
@@ -60,13 +59,13 @@ namespace UI.MainMenu
             _signalBus.Subscribe<ClickedShopPanelButton>(ShopPanelButtonBehaviour);
 
             _signalBus.Subscribe<SceneLoadedStartedSignal>(OnSceneLoadStart);
-
             _signalBus.Subscribe<SceneLoadedEndSignal>(OnSceneLoadFinished);
         }
 
         private void UnRegisterUIActions()
         {
             _signalBus.Unsubscribe<CompletedGameDataLoadingSignal>(CompleteGameDataLoadUIBehaviour);
+            _signalBus.Unsubscribe<StartedGameDataLoadingSignal>(StartGameDataLoadUIBehaviour);
 
             _signalBus.Unsubscribe<ClickedHomePanelButton>(HomePanelButtonBehaviour);
 
@@ -75,7 +74,6 @@ namespace UI.MainMenu
             _signalBus.Unsubscribe<ClickedShopPanelButton>(ShopPanelButtonBehaviour);
 
             _signalBus.Unsubscribe<SceneLoadedStartedSignal>(OnSceneLoadStart);
-
             _signalBus.Unsubscribe<SceneLoadedEndSignal>(OnSceneLoadFinished);
         }
 
@@ -93,6 +91,11 @@ namespace UI.MainMenu
             _currentPanelDisplaying = _mainPanelMap[MainPanelType.HomePanel].gameObject;
 
             BindButtonActions();
+        }
+
+        private void StartGameDataLoadUIBehaviour()
+        {
+            ExecuteUIAction(UIActionType.SetPanelVisibility, true, _mainPanelMap[MainPanelType.LoadingPanel].gameObject);
         }
 
         private void CompleteGameDataLoadUIBehaviour(CompletedGameDataLoadingSignal signalResponse)
