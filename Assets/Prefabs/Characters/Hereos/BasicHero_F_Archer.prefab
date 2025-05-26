@@ -12618,6 +12618,7 @@ GameObject:
   - component: {fileID: 3194666736543946454}
   - component: {fileID: 7479273336936911539}
   - component: {fileID: 1989214387523894705}
+  - component: {fileID: -658307502825744848}
   m_Layer: 0
   m_Name: BasicHero_F_Archer
   m_TagString: Untagged
@@ -12641,6 +12642,7 @@ Transform:
   - {fileID: 3710129781962587146}
   - {fileID: 3651088091082700346}
   - {fileID: 2470014822094201755}
+  - {fileID: 5181686689027779207}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7479273336936911539
@@ -12677,8 +12679,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0fef8f2fa1b642993350e67a4c8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterLocomotionManager: {fileID: 0}
   FixedHeroData: {fileID: 11400000, guid: 26e0aed666683d44a9075ce92a0cada0, type: 2}
+  DynamicHeroData:
+    HeroId: 0
+    HpStat: 0
+    StrStat: 0
+    ApStat: 0
+    DexStat: 0
+    FixedHeroData: {fileID: 0}
+--- !u!114 &-658307502825744848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971899030227973056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 7017033602081693727}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &8078508998895994961
 GameObject:
   m_ObjectHideFlags: 0
@@ -13250,6 +13276,50 @@ Transform:
   - {fileID: 5809147240815146733}
   m_Father: {fileID: 3862303939970048720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8485588162876658213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5181686689027779207}
+  - component: {fileID: 7017033602081693727}
+  m_Layer: 0
+  m_Name: Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5181686689027779207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8485588162876658213}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3194666736543946454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7017033602081693727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8485588162876658213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3a0a1751fc5794e9cb5f2dd0d9c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8654847539588038805
 GameObject:
   m_ObjectHideFlags: 0

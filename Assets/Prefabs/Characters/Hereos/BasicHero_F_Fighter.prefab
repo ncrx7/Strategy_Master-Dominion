@@ -67,6 +67,50 @@ Transform:
   - {fileID: 8903953466913807350}
   m_Father: {fileID: 3464678044899665259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &231350492937585187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8612746493584064284}
+  - component: {fileID: 2681679748204773408}
+  m_Layer: 0
+  m_Name: Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8612746493584064284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231350492937585187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 338724625305763268}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2681679748204773408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231350492937585187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3a0a1751fc5794e9cb5f2dd0d9c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &238326495492297258
 GameObject:
   m_ObjectHideFlags: 0
@@ -9638,6 +9682,7 @@ GameObject:
   - component: {fileID: 338724625305763268}
   - component: {fileID: 6211826935903600489}
   - component: {fileID: 6895664529731316917}
+  - component: {fileID: 6700220254520838713}
   m_Layer: 0
   m_Name: BasicHero_F_Fighter
   m_TagString: Untagged
@@ -9661,6 +9706,7 @@ Transform:
   - {fileID: 8652329966477253424}
   - {fileID: 6593559698398571027}
   - {fileID: 9030251701603232917}
+  - {fileID: 8612746493584064284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6211826935903600489
@@ -9697,8 +9743,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f0fef8f2fa1b642993350e67a4c8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterLocomotionManager: {fileID: 0}
   FixedHeroData: {fileID: 11400000, guid: 20ef6ecfc1ee0524d805256ba461fcec, type: 2}
+  DynamicHeroData:
+    HeroId: 0
+    HpStat: 0
+    StrStat: 0
+    ApStat: 0
+    DexStat: 0
+    FixedHeroData: {fileID: 0}
+--- !u!114 &6700220254520838713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291871437070113916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 2681679748204773408}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &6387747181074666012
 GameObject:
   m_ObjectHideFlags: 0
