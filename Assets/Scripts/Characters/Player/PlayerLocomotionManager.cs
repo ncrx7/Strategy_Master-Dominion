@@ -5,14 +5,15 @@ namespace Characters.Player
 {
     public class PlayerLocomotionManager : CharacterLocomotionManager
     {
+
         private void FixedUpdate()
         {
-            if(_characterController == null)
+            if (_characterController == null)
                 return;
 
             SetMoveDirection();
 
-            if(_characterMoveDirection.magnitude < 0.1f)
+            if (_characterMoveDirection.magnitude < 0.1f)
                 return;
 
             HandleMoveLocomotion(_characterMoveDirection);
@@ -28,7 +29,7 @@ namespace Characters.Player
         {
             _characterMoveDirection.x = InputManager.Instance.GetMovementDirection.y;
             _characterMoveDirection.z = -InputManager.Instance.GetMovementDirection.x;
-            
+
         }
 
         private void HandleRotationLocomotion(Vector3 direction)

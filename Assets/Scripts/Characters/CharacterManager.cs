@@ -1,10 +1,16 @@
 using UnityEngine;
+using Zenject;
 
 namespace Characters
 {
     public class CharacterManager : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] protected CharacterLocomotionManager _characterLocomotionManager; 
+        protected CharacterLocomotionManager _characterLocomotionManager;
+
+        [Inject]
+        private void InjectDependencies(CharacterLocomotionManager characterLocomotionManager)
+        {
+            _characterLocomotionManager = characterLocomotionManager;
+        }
     }
 }

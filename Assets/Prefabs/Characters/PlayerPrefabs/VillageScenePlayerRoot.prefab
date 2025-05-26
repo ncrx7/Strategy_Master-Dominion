@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4135958738732933413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7650995427963378095}
+  - component: {fileID: 2583981965959878823}
+  m_Layer: 0
+  m_Name: Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7650995427963378095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135958738732933413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6020773164051161428}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2583981965959878823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135958738732933413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc2fefac2a960943b9bb01a9b8d6a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7120692333739664832
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +56,7 @@ GameObject:
   - component: {fileID: 6125468653122937322}
   - component: {fileID: 750888441840804878}
   - component: {fileID: 8994579323272148476}
+  - component: {fileID: 6115521593144126772}
   m_Layer: 0
   m_Name: VillageScenePlayerRoot
   m_TagString: Untagged
@@ -33,6 +78,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4311240969572331326}
+  - {fileID: 7650995427963378095}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6125468653122937322
@@ -90,6 +136,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6115521593144126772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120692333739664832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 2583981965959878823}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &8681764117785338077
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ef5a89d10b35d8147aed1a08b3814a09, type: 2}
     - target: {fileID: 4138223764781045879, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4154391968531419768, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: m_IsActive
@@ -406,6 +470,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ef5a89d10b35d8147aed1a08b3814a09, type: 2}
+    - target: {fileID: 5241810469237290876, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5271847170201846017, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
