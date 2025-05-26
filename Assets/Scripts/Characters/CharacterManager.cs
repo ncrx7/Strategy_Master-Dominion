@@ -3,12 +3,12 @@ using Zenject;
 
 namespace Characters
 {
-    public class CharacterManager : MonoBehaviour
+    public class CharacterManager<T> : MonoBehaviour
     {
-        protected CharacterLocomotionManager _characterLocomotionManager;
+        protected CharacterLocomotionManager<T> _characterLocomotionManager;
 
         [Inject]
-        private void InjectDependencies(CharacterLocomotionManager characterLocomotionManager)
+        private void InjectDependencies(CharacterLocomotionManager<T> characterLocomotionManager)
         {
             _characterLocomotionManager = characterLocomotionManager;
         }

@@ -1,44 +1,45 @@
 using InputHandler;
 using UnityEngine;
+using Zenject;
 
 namespace Characters.Player
 {
-    public class PlayerLocomotionManager : CharacterLocomotionManager
+    public class PlayerLocomotionManager : CharacterLocomotionManager<CharacterController>
     {
+        [SerializeField] protected CharacterController _characterController;
 
         private void FixedUpdate()
         {
             if (_characterController == null)
                 return;
 
-            SetMoveDirection();
+            SetLocomotionDirection();
 
             if (_characterMoveDirection.magnitude < 0.1f)
                 return;
 
-            HandleMoveLocomotion(_characterMoveDirection);
-            HandleRotationLocomotion(_characterMoveDirection);
+            Move();
+            Rotate();
         }
 
-        private void HandleMoveLocomotion(Vector3 direction)
+        public override void Move()
         {
-            _characterController.Move(_characterSpeed * Time.deltaTime * _characterMoveDirection);
+            MoveService.Move(_characterController, _characterMoveDirection, _characterSpeed);
         }
 
-        private void SetMoveDirection()
+        public override void Rotate()
         {
-            _characterMoveDirection.x = InputManager.Instance.GetMovementDirection.y;
-            _characterMoveDirection.z = -InputManager.Instance.GetMovementDirection.x;
-
-        }
-
-        private void HandleRotationLocomotion(Vector3 direction)
-        {
-            Quaternion targetAngle = Quaternion.LookRotation(direction);
+            Quaternion targetAngle = Quaternion.LookRotation(_characterMoveDirection);
 
             Quaternion targetRotation = Quaternion.Slerp(transform.rotation, targetAngle, Time.deltaTime * _rotationSpeed);
 
             transform.rotation = targetRotation;
+        }
+
+        protected override void SetLocomotionDirection()
+        {
+            _characterMoveDirection.x = InputManager.Instance.GetMovementDirection.y;
+            _characterMoveDirection.z = -InputManager.Instance.GetMovementDirection.x;
         }
     }
 }

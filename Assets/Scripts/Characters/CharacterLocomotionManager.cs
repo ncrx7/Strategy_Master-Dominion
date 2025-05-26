@@ -1,26 +1,32 @@
+using Characters.Services.Move;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using Zenject;
 
 namespace Characters
 {
-    public class CharacterLocomotionManager : MonoBehaviour
+    public class CharacterLocomotionManager<T> : MonoBehaviour
     {
-        protected CharacterManager _characterManager;
-
-        [Header("References")]
-        [SerializeField] protected CharacterController _characterController;
+        protected CharacterManager<T> _characterManager;
+        public IMoveService<T> MoveService;
 
         [Header("Properties")]
         [SerializeField] protected float _characterSpeed;
-        [SerializeField] protected Vector3 _characterMoveDirection;
-
         [SerializeField] protected float _rotationSpeed;
 
+        protected Vector3 _characterMoveDirection;
+
+
         [Inject]
-        private void InjectDependencies(CharacterManager characterManager)
+        private void InjectDependencies(CharacterManager<T> characterManager, IMoveService<T> moveService)
         {
             _characterManager = characterManager;
+            MoveService = moveService;
         }
+
+        public virtual void Move() { }
+        public virtual void Rotate() { }
+        protected virtual void SetLocomotionDirection() {}
+
     }
 }

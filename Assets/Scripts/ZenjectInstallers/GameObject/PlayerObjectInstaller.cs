@@ -1,5 +1,6 @@
 using Characters;
 using Characters.Player;
+using Characters.Services.Move;
 using UnityEngine;
 using Zenject;
 
@@ -9,8 +10,10 @@ namespace ZenjectInstallers
     {
         public override void InstallBindings()
         {
-            Container.Bind<CharacterManager>().To<PlayerManager>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<CharacterLocomotionManager>().To<PlayerLocomotionManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CharacterLocomotionManager<CharacterController>>().To<PlayerLocomotionManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CharacterManager<CharacterController>>().To<PlayerManager>().FromComponentInHierarchy().AsSingle();
+
+            Container.Bind<IMoveService<CharacterController>>().To<CharacterControllerMoveService>().AsSingle();
         }
     }
 }
