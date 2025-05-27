@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Player
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
-  m_GUID: 08adab63821c51a4d8a355d374df5c3f
-  m_SerializeEntries: []
+  m_GroupName: Player
+  m_GUID: 0f8a60b5c322a364d9fc43eff41ade39
+  m_SerializeEntries:
+  - m_GUID: 79a310a03c22e4a49ab3751959ecfd2c
+    m_Address: Assets/Prefabs/Characters/PlayerPrefabs/VillageScenePlayerRoot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33bbacaa0bc27554f83cd0c0eec9b72f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: dd5fb448c4d9a7142b58af569f26e4fe, type: 2}
-    - {fileID: 11400000, guid: 46bac211a3d12584c94c5cfff5178376, type: 2}
+    - {fileID: 11400000, guid: 352cc50ade6c7d54d8d0d3ff2f44e21e, type: 2}
+    - {fileID: 11400000, guid: c80a85db8aba8394f80bb33a384092bd, type: 2}

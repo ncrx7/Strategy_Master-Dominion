@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a80aa16f1671a746b56c323d9726fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterLocomotionManager: {fileID: 750888441840804878}
 --- !u!114 &750888441840804878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,11 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4d3909d26b6a54f9c9f5a579ecfad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterManager: {fileID: 6125468653122937322}
-  _characterController: {fileID: 8994579323272148476}
   _characterSpeed: 5
-  _characterMoveDirection: {x: 0, y: 0, z: 0}
   _rotationSpeed: 10
+  _characterController: {fileID: 8994579323272148476}
 --- !u!143 &8994579323272148476
 CharacterController:
   m_ObjectHideFlags: 0
