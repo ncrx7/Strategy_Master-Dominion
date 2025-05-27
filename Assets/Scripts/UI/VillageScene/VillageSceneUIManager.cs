@@ -39,6 +39,7 @@ namespace UI.VillageScene
         //TODO: BIND PLATFORM UI SERVICE INTERFACE HERE INSTEAD SWITCH CASE
         private void SetInitialPlatformBasedPanels(VillageSceneStartSignal signalResponse)
         {
+            Debug.Log("Village UI Manager seting initial platform method worked");
             switch (signalResponse.platformType)
             {
                 case PlatformType.PC:

@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: CinematicScenes
   m_GUID: 6035eb5f6b016354681e1fecd756859f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 80e9a699f87adbd4f9d37544e942206c
+    m_Address: Assets/Scenes/Village/VillageCinematics.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33bbacaa0bc27554f83cd0c0eec9b72f, type: 2}
   m_SchemaSet:

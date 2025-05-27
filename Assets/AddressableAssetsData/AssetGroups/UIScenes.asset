@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: UIScenes
   m_GUID: a0a92528a1e9f12438787775790ebb48
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 18a09f1242d9f354cb07eb7cc0d4c057
+    m_Address: Assets/Scenes/Arena/ArenaUI.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 820401f906964f1438b51c6647456fa4
+    m_Address: Assets/Scenes/Village/VillageUI.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33bbacaa0bc27554f83cd0c0eec9b72f, type: 2}
   m_SchemaSet:

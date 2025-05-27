@@ -16,12 +16,12 @@ MonoBehaviour:
   m_GUID: ab364649c1ea6bb4cb213ec32b963550
   m_SerializeEntries:
   - m_GUID: 47931446b83ff034b8533b617cae43a7
-    m_Address: Assets/Scenes/VillageScene.unity
+    m_Address: Assets/Scenes/Village/VillageScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f67631d050d2ed1498c5ae5ef8359cc9
-    m_Address: Assets/Scenes/ArenaScene.unity
+    m_Address: Assets/Scenes/Arena/ArenaScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -669,11 +669,23 @@ MonoBehaviour:
   - SceneGroupName: Village
     Scenes:
     - Reference:
+        asset: {fileID: 102900000, guid: 820401f906964f1438b51c6647456fa4, type: 3}
+        guid: 820401f906964f1438b51c6647456fa4
+      SceneType: 2
+    - Reference:
+        asset: {fileID: 102900000, guid: 80e9a699f87adbd4f9d37544e942206c, type: 3}
+        guid: 80e9a699f87adbd4f9d37544e942206c
+      SceneType: 4
+    - Reference:
         asset: {fileID: 102900000, guid: 47931446b83ff034b8533b617cae43a7, type: 3}
         guid: 47931446b83ff034b8533b617cae43a7
       SceneType: 0
   - SceneGroupName: Arena
     Scenes:
+    - Reference:
+        asset: {fileID: 102900000, guid: 18a09f1242d9f354cb07eb7cc0d4c057, type: 3}
+        guid: 18a09f1242d9f354cb07eb7cc0d4c057
+      SceneType: 2
     - Reference:
         asset: {fileID: 102900000, guid: f67631d050d2ed1498c5ae5ef8359cc9, type: 3}
         guid: f67631d050d2ed1498c5ae5ef8359cc9
