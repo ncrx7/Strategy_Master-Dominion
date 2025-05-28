@@ -1,4 +1,6 @@
+using Characters.Services.Move;
 using InputHandler;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -8,16 +10,19 @@ namespace Characters.Player
     {
         [SerializeField] protected CharacterController _characterController;
 
+        [Inject] private InputManager _inputManager;
+
+
         private void OnEnable()
         {
-            InputManager.Instance.OnMovePerformed += OnCharacterMoveStart;
-            InputManager.Instance.OnMoveCancelled += OnCharacterMoveCancel;
+            _inputManager.OnMovePerformed += OnCharacterMoveStart;
+            _inputManager.OnMoveCancelled += OnCharacterMoveCancel;
         }
 
         private void OnDisable()
         {
-            InputManager.Instance.OnMovePerformed -= OnCharacterMoveStart;
-            InputManager.Instance.OnMoveCancelled -= OnCharacterMoveCancel;
+            _inputManager.OnMovePerformed -= OnCharacterMoveStart;
+            _inputManager.OnMoveCancelled -= OnCharacterMoveCancel;
         }
 
         private void FixedUpdate()

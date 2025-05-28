@@ -1,4 +1,5 @@
 using Data.Configs;
+using InputHandler;
 using UnityEngine;
 using Zenject;
 
@@ -10,7 +11,7 @@ namespace ZenjectInstallers
 
         public override void InstallBindings()
         {
-
+            Container.Bind<InputManager>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

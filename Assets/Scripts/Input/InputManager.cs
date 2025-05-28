@@ -7,7 +7,7 @@ using Zenject;
 
 namespace InputHandler
 {
-    public class InputManager : SingletonBehavior<InputManager>
+    public class InputManager : MonoBehaviour
     {
         private InputSystemActions _inputControls;
 

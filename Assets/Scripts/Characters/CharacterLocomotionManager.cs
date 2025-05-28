@@ -18,7 +18,7 @@ namespace Characters
 
 
         [Inject]
-        private void InjectDependencies(CharacterManager<T> characterManager, IMoveService<T> moveService)
+        protected virtual void InjectDependencies(CharacterManager<T> characterManager, IMoveService<T> moveService)
         {
             _characterManager = characterManager;
             MoveService = moveService;
