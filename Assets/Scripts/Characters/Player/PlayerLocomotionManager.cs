@@ -8,12 +8,22 @@ namespace Characters.Player
     {
         [SerializeField] protected CharacterController _characterController;
 
+        private void OnEnable()
+        {
+            InputManager.Instance.OnMovePerformed += OnCharacterMoveStart;
+            InputManager.Instance.OnMoveCancelled += OnCharacterMoveCancel;
+        }
+
+        private void OnDisable()
+        {
+            InputManager.Instance.OnMovePerformed -= OnCharacterMoveStart;
+            InputManager.Instance.OnMoveCancelled -= OnCharacterMoveCancel;
+        }
+
         private void FixedUpdate()
         {
             if (_characterController == null)
                 return;
-
-            SetLocomotionDirection();
 
             if (_characterMoveDirection.magnitude < 0.1f)
                 return;
@@ -36,10 +46,15 @@ namespace Characters.Player
             transform.rotation = targetRotation;
         }
 
-        protected override void SetLocomotionDirection()
+        protected override void OnCharacterMoveStart(Vector2 directionResponse)
         {
-            _characterMoveDirection.x = InputManager.Instance.GetMovementDirection.y;
-            _characterMoveDirection.z = -InputManager.Instance.GetMovementDirection.x;
+            _characterMoveDirection.x = directionResponse.y;
+            _characterMoveDirection.z = -directionResponse.x;
+        }
+
+        protected override void OnCharacterMoveCancel()
+        {
+            _characterMoveDirection = Vector3.zero;
         }
     }
 }

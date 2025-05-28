@@ -26,7 +26,9 @@ namespace Characters
 
         public virtual void Move() { }
         public virtual void Rotate() { }
-        protected virtual void SetLocomotionDirection() {}
+
+        protected virtual void OnCharacterMoveStart(Vector2 directionResponse) { }
+        protected virtual void OnCharacterMoveCancel() { }
 
     }
 }

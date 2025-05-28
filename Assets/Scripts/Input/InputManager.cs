@@ -1,3 +1,4 @@
+using System;
 using EventChanells;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,9 @@ namespace InputHandler
         public float MoveAmount { get; private set; }
 
         private SignalBus _signalBus;
+
+        public Action<Vector2> OnMovePerformed;
+        public Action OnMoveCancelled;
 
         [Inject]
         private void InjectDependencies(SignalBus signalBus)
@@ -60,6 +64,8 @@ namespace InputHandler
         {
             _movementInput = context.ReadValue<Vector2>();
 
+            OnMovePerformed?.Invoke(_movementInput);
+
             MoveAmount = Mathf.Clamp01(Mathf.Abs(_movementInput.y) + Mathf.Abs(_movementInput.x));
             //Debug.Log("move amount: " + MoveAmount);
 
@@ -77,6 +83,7 @@ namespace InputHandler
         private void ResetLocomotionInputData(InputAction.CallbackContext context)
         {
             _movementInput = Vector2.zero;
+            OnMoveCancelled?.Invoke();
         }
 
         public Vector2 GetMovementDirection => _movementInput;
