@@ -1,3 +1,4 @@
+using Core;
 using Data.Configs;
 using InputHandler;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace ZenjectInstallers
         public override void InstallBindings()
         {
             Container.Bind<InputManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

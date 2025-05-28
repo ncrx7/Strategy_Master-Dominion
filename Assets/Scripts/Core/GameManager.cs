@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Core
 {
-    public class GameManager : SingletonBehavior<GameManager>
+    public class GameManager : MonoBehaviour
     {
         public Enums.PlatformType deviceType;
         [SerializeField] private CinemachineCamera _cinemachineCamera;
