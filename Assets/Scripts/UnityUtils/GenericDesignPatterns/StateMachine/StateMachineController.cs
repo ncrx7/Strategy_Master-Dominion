@@ -82,5 +82,10 @@ namespace UnityUtils.GenericDesignPatterns.StateMachine
             else
                 _currentState.OnEnterState();
         }
+
+        public void TickState()
+        {
+            _currentState.Tick();
+        }
     }
 }

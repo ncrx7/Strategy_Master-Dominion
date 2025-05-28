@@ -1,5 +1,6 @@
 using Characters.Services.Move;
 using InputHandler;
+using StateMachine.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -25,18 +26,6 @@ namespace Characters.Player
             _inputManager.OnMoveCancelled -= OnCharacterMoveCancel;
         }
 
-        private void FixedUpdate()
-        {
-            if (_characterController == null)
-                return;
-
-            if (_characterMoveDirection.magnitude < 0.1f)
-                return;
-
-            Move();
-            Rotate();
-        }
-
         public override void Move()
         {
             MoveService.Move(_characterController, _characterMoveDirection, _characterSpeed);
@@ -55,11 +44,15 @@ namespace Characters.Player
         {
             _characterMoveDirection.x = directionResponse.y;
             _characterMoveDirection.z = -directionResponse.x;
+
+            _characterManager.GetCharacterStateMachine.ChangeState<PlayerMoveState>();
         }
 
         protected override void OnCharacterMoveCancel()
         {
             _characterMoveDirection = Vector3.zero;
+
+            _characterManager.GetCharacterStateMachine.ChangeState<PlayerIdleState>();
         }
     }
 }
