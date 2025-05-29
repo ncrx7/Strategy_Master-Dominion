@@ -54,5 +54,7 @@ namespace Characters.Player
 
             _characterManager.GetCharacterStateMachine.ChangeState<PlayerIdleState>();
         }
+
+        public InputManager GetInputManager => _inputManager;
     }
 }

@@ -15,7 +15,7 @@ namespace Characters.Player
         {
             base.SetStateMachine();
 
-            var idleState = new PlayerIdleState();
+            var idleState = new PlayerIdleState(this);
             var moveState = new PlayerMoveState(this);
 
             _stateMachine.AddState(idleState);

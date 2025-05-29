@@ -83,6 +83,7 @@ namespace InputHandler
         private void ResetLocomotionInputData(InputAction.CallbackContext context)
         {
             _movementInput = Vector2.zero;
+            MoveAmount = 0;
             OnMoveCancelled?.Invoke();
         }
 

@@ -55,8 +55,10 @@ GameObject:
   - component: {fileID: 6020773164051161428}
   - component: {fileID: 6125468653122937322}
   - component: {fileID: 750888441840804878}
+  - component: {fileID: 4513823142584258303}
   - component: {fileID: 8994579323272148476}
   - component: {fileID: 6115521593144126772}
+  - component: {fileID: 5552842288887403929}
   m_Layer: 0
   m_Name: VillageScenePlayerRoot
   m_TagString: Untagged
@@ -108,6 +110,19 @@ MonoBehaviour:
   _characterSpeed: 5
   _rotationSpeed: 10
   _characterController: {fileID: 8994579323272148476}
+--- !u!114 &4513823142584258303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120692333739664832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f728020055d2e9441ae1d099c60701ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5552842288887403929}
 --- !u!143 &8994579323272148476
 CharacterController:
   m_ObjectHideFlags: 0
@@ -151,6 +166,28 @@ MonoBehaviour:
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!95 &5552842288887403929
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120692333739664832}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d49c65de9fce66146b5d0e164b1f9d2d, type: 3}
+  m_Controller: {fileID: 9100000, guid: a863ed08179e75449a8ed412ef7393b8, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8681764117785338077
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +248,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 660abc7a7255b0047bb6f7a86efa50b9, type: 2}
+    - target: {fileID: 532902207822436420, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 567333761067129960, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -331,6 +372,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 660abc7a7255b0047bb6f7a86efa50b9, type: 2}
+    - target: {fileID: 2867828449990711878, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3005302477022219761, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -407,6 +452,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 660abc7a7255b0047bb6f7a86efa50b9, type: 2}
+    - target: {fileID: 4074014119820909538, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074014119820909538, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a863ed08179e75449a8ed412ef7393b8, type: 2}
     - target: {fileID: 4095716238596242311, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -519,6 +572,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 660abc7a7255b0047bb6f7a86efa50b9, type: 2}
+    - target: {fileID: 6425609798650382632, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6452506898693694414, guid: 7cdfa322a3d089c4b89c202bebd07c7d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

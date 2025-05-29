@@ -7,6 +7,9 @@ namespace Characters
     public class CharacterManager<T> : MonoBehaviour
     {
         protected CharacterLocomotionManager<T> _characterLocomotionManager;
+        protected CharacterAnimationManager<T> _characterAnimationManager;
+
+
         protected StateMachineController _stateMachine;
 
         protected virtual void Start()
@@ -15,9 +18,10 @@ namespace Characters
         }
 
         [Inject]
-        private void InjectDependencies(CharacterLocomotionManager<T> characterLocomotionManager)
+        private void InjectDependencies(CharacterLocomotionManager<T> characterLocomotionManager, CharacterAnimationManager<T> characterAnimationManager)
         {
             _characterLocomotionManager = characterLocomotionManager;
+            _characterAnimationManager = characterAnimationManager;
         }
 
         protected virtual void SetStateMachine()
@@ -26,6 +30,7 @@ namespace Characters
         }
 
         public CharacterLocomotionManager<T> GetCharacterLocomotionManager => _characterLocomotionManager;
+        public CharacterAnimationManager<T> GetCharacterAnimationManager => _characterAnimationManager; 
         public StateMachineController GetCharacterStateMachine => _stateMachine;
     }
 }
