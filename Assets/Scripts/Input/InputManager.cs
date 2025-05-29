@@ -64,7 +64,6 @@ namespace InputHandler
         {
             _movementInput = context.ReadValue<Vector2>();
 
-            OnMovePerformed?.Invoke(_movementInput);
 
             MoveAmount = Mathf.Clamp01(Mathf.Abs(_movementInput.y) + Mathf.Abs(_movementInput.x));
             //Debug.Log("move amount: " + MoveAmount);
@@ -77,7 +76,8 @@ namespace InputHandler
             {
                 MoveAmount = 1;
             }
-            //EventSystem.MoveCharacterOnGround?.Invoke(_movementInput);
+
+            OnMovePerformed?.Invoke(_movementInput);
         }
 
         private void ResetLocomotionInputData(InputAction.CallbackContext context)

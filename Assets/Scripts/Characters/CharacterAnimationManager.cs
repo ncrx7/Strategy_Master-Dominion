@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -23,12 +24,12 @@ namespace Characters
         }
 
         //TODO: UPDATE PARAMETER SERVICE
-        public void UpdateAnimatorParameter(AnimatorValueType animatorValueType, string parameterName, float floatValue, bool boolValue)
+        public void UpdateAnimatorParameter(AnimatorValueType animatorValueType, string parameterName, float floatValue, bool boolValue, float dampTime)
         {
             switch (animatorValueType)
             {
                 case AnimatorValueType.FLOAT:
-                    _animator.SetFloat(parameterName, floatValue, 0.5f, Time.deltaTime);
+                    DampSettingFloat(parameterName, floatValue, dampTime).Forget();
                     break;
                 case AnimatorValueType.BOOL:
                     _animator.SetBool(parameterName, boolValue);
@@ -36,14 +37,33 @@ namespace Characters
             }
         }
 
-        public void PlayTargetAnimation(ulong id, string targetAnimation, bool isPerformingAction, bool canRotate = false, bool canMove = false, bool applyRootMotion = true)
+        public void PlayTargetAnimation(string targetAnimation, float dampTime, bool isPerformingAction, bool canRotate = false, bool canMove = false, bool applyRootMotion = true)
         {
             //_characterManager.applyRootMotion = applyRootMotion;
-            _animator.CrossFade(targetAnimation, 0.2f);
+            _animator.CrossFade(targetAnimation, dampTime);
             //_characterManager.isPerformingAction = isPerformingAction;
             //_characterManager.canMove = canMove;
             //_characterManager.canRotate = canRotate;
 
+        }
+
+        private async UniTaskVoid DampSettingFloat(string parameterName, float targetValue, float duration)
+        {
+            float startValue = _animator.GetFloat(parameterName);
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                float newValue = Mathf.Lerp(startValue, targetValue, t);
+    
+                _animator.SetFloat(parameterName, newValue);
+
+                await UniTask.Yield(PlayerLoopTiming.Update); 
+            }
+
+            _animator.SetFloat(parameterName, targetValue);
         }
     }
 

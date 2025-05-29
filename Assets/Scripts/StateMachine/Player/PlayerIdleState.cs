@@ -26,7 +26,7 @@ namespace StateMachine.Player
 
         public void OnEnterState()
         {
-            //_playerManager.GetCharacterAnimationManager.UpdateAnimatorParameter(AnimatorValueType.FLOAT, "Vertical", _inputManager.MoveAmount, false);
+            _playerManager.GetCharacterAnimationManager.UpdateAnimatorParameter(AnimatorValueType.FLOAT, "Vertical", _inputManager.MoveAmount, false, 0.5f);
             Debug.LogWarning("Entered idle state");
         }
 
@@ -37,7 +37,7 @@ namespace StateMachine.Player
 
         public void Tick()
         {
-            _playerManager.GetCharacterAnimationManager.UpdateAnimatorParameter(AnimatorValueType.FLOAT, "Vertical", _inputManager.MoveAmount, false);
+            
         }
     }
 }
