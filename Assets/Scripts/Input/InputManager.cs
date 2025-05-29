@@ -13,7 +13,7 @@ namespace InputHandler
 
         [Header("Player Movement fields")]
         [SerializeField] private Vector2 _movementInput;
-        public float MoveAmount { get; private set; }
+        public float MoveAmount;
 
         private SignalBus _signalBus;
 
@@ -76,7 +76,7 @@ namespace InputHandler
             {
                 MoveAmount = 1;
             }
-
+         
             OnMovePerformed?.Invoke(_movementInput);
         }
 
